@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter the Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;500;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="badge">
+                        <span class="ping"></span>
+                        <span>OFFICIAL COLLEGIATE ESPORTS GATEWAY</span>
+                    </div>
+                    <h1>ENTER THE<br><span>ARENA.</span></h1>
+                    <p>Login with your verified College Student ID or initialize your registered esports player telemetry profile.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="main-grid">
+                <div class="card login-card">
+                    <div class="accent-bar"></div>
+
+                    <div class="card-content">
+                        <div class="card-heading">
+                            <div class="heading-row">
+                                <span class="terminal">TERMINAL 01</span>
+                                <span class="telemetry">SECURE_SSO</span>
+                            </div>
+                            <h2>STUDENT LOGIN</h2>
+                            <p>Direct access for enrolled roster athletes &amp; tournament leads.</p>
+                        </div>
+
+                        <form onsubmit="event.preventDefault();">
+                            <div class="field">
+                                <label>COLLEGIATE INSTITUTION EMAIL</label>
+                                <div class="input-wrap">
+                                    <input type="email" placeholder="rollnumber@college.edu.in" required>
+                                    <span class="material-symbols-outlined">school</span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="label-row">
+                                    <label>ARENA PASSCODE</label>
+                                    <a href="#reset">FORGOT KEY?</a>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="password" placeholder="••••••••••••" required>
+                                    <span class="material-symbols-outlined">lock</span>
+                                </div>
+                            </div>
+
+                            <div class="trust-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>TRUST THIS GAMING RIG</span>
+                                </label>
+                                <span class="telemetry">AUTO-EXP: 14D</span>
+                            </div>
+
+                            <button class="primary-button" type="submit">
+                                <span>LOGIN TO ARENA</span>
+                                <span class="material-symbols-outlined">bolt</span>
+                            </button>
+                        </form>
+
+                        <div class="sso">
+                            <div class="sso-label">// OR VERIFY VIA CAMPUS SSO //</div>
+                            <button class="sso-button" type="button">
+                                <span>
+                                    <span class="material-symbols-outlined">badge</span>
+                                    CAMPUS PORTAL DIRECT LOGIN
+                                </span>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="roster-status">
+                        <div class="initials">CA</div>
+                        <div>
+                            <div class="status-title">ROSTER SYSTEM ACTIVE</div>
+                            <p>Current Tournament: BGMI Freshers Cup 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card register-card">
+                    <div class="card-content">
+                        <div class="register-heading">
+                            <div>
+                                <span class="terminal">TERMINAL 02</span>
+                                <h2>REGISTER PLAYER PROFILE</h2>
+                            </div>
+                            <span class="verification">STUDENT ID VERIFICATION READY</span>
+                        </div>
+
+                        <form onsubmit="event.preventDefault();">
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label>GAMERTAG / IN-GAME NAME (IGN) *</label>
+                                    <input type="text" placeholder="e.g. PHANTOM_X" required>
+                                </div>
+                                <div class="field">
+                                    <label>COLLEGE BRANCH &amp; BATCH *</label>
+                                    <select>
+                                        <option>Computer Science &amp; Engg (CSE) - '25</option>
+                                        <option>Electronics &amp; Comm. (ECE) - '26</option>
+                                        <option>Mechanical Engineering - '25</option>
+                                        <option>Information Technology (IT) - '27</option>
+                                        <option>Civil Engineering - '26</option>
+                                        <option>Other Department / Postgrad</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label>PRIMARY COMPETITIVE TITLE *</label>
+                                    <select>
+                                        <option>Battlegrounds Mobile India (BGMI)</option>
+                                        <option>VALORANT (Tactical FPS)</option>
+                                        <option>Counter-Strike 2 (CS2)</option>
+                                        <option>EA SPORTS FC 24</option>
+                                        <option>Rocket League Collegiate</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>CURRENT TIER / RANK *</label>
+                                    <input type="text" placeholder="e.g. Conqueror / Radiant / Ascendant 3" required>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label>CAMPUS EMAIL ADDRESS *</label>
+                                    <input type="email" placeholder="student.id@college.edu.in" required>
+                                </div>
+                                <div class="field">
+                                    <label>DISCORD ID OR MOBILE (TEAM ROSTER)</label>
+                                    <input type="text" placeholder="discord_tag#0000 / +91 XXXXX">
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label>CREATE ARENA PASSCODE *</label>
+                                    <input type="password" placeholder="Min. 8 alphanumeric" required>
+                                </div>
+                                <div class="field">
+                                    <label>CONFIRM PASSCODE *</label>
+                                    <input type="password" placeholder="Repeat passcode" required>
+                                </div>
+                            </div>
+
+                            <label class="agreement">
+                                <input type="checkbox" required>
+                                <span>I confirm I am an active registered student, and agree to the Campus Anti-Cheat &amp; Sportsmanship Charter. Violations result in blacklisting from campus gaming labs.</span>
+                            </label>
+
+                            <button class="create-button" type="submit">
+                                <span>CREATE PLAYER ACCOUNT</span>
+                                <span class="material-symbols-outlined">sports_esports</span>
+                            </button>
+                        </form>
+
+                        <div class="approval">CAMPUS ATHLETIC COUNCIL APPROVED</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-bar">
+                <div class="trust-card">
+                    <div class="trust-icon"><span class="material-symbols-outlined">verified_user</span></div>
+                    <div>
+                        <h3>CAMPUS VERIFIED ONLY</h3>
+                        <p>Every profile is mapped to authentic college roll registers. Zero smurfs, zero mercenary mercenaries.</p>
+                    </div>
+                </div>
+
+                <div class="trust-card">
+                    <div class="trust-icon"><span class="material-symbols-outlined">gavel</span></div>
+                    <div>
+                        <h3>ANTI-CHEAT FAIR PLAY PACT</h3>
+                        <p>Hardware IDs tracked across on-campus scrims and online LAN qualifier stages.</p>
+                    </div>
+                </div>
+
+                <div class="trust-card">
+                    <div class="trust-icon"><span class="material-symbols-outlined">meeting_room</span></div>
+                    <div>
+                        <h3>PS5 LOUNGE &amp; LAB ACCESS</h3>
+                        <p>Instant biometric check-in key generated for college eSports arenas and dedicated practice suites.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
