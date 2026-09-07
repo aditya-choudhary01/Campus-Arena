@@ -1,40 +1,250 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html,
 body {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    min-height: 100vh;
+    font-family: 'Space Grotesk', sans-serif;
     background: #0e0e0e;
-    color: #e5e2e1;
-    font-family: "Chivo", sans-serif;
-    overscroll-behavior: none;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-button,
-input,
-select {
-    font: inherit;
+a {
+    text-decoration: none;
 }
 
-button {
-    border: 0;
+header {
+    background: #141414;
+    border-bottom: 1px solid #242424;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #d4ff00;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: #999;
+    font-size: 14px;
+}
+
+nav a:hover,
+nav a.active {
+    color: #d4ff00;
+}
+
+.nav-btn {
+    border: 1px solid #333;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    background: #171717;
+    border: 1px solid #282828;
+    border-radius: 12px;
+    padding: 40px 36px;
+}
+
+.brand-tag {
+    display: inline-block;
+    color: #d4ff00;
+    background: rgba(212, 255, 0, 0.12);
+    border: 1px solid rgba(212, 255, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.tab-group {
+    display: flex;
+    background: #101010;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: #888;
+    font-weight: 600;
+}
+
+.tab-btn.active {
+    background: #242424;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background: #101010;
+    border: 1px solid #2e2e2e;
+    color: white;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #d4ff00;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.form-options a {
+    color: #aaa;
+}
+
+.form-options a:hover {
+    color: #d4ff00;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 13px;
+    background: #d4ff00;
+    border: none;
+    color: black;
+    font-weight: 700;
+    border-radius: 6px;
     cursor: pointer;
 }
 
-.page {
-    min-height: 100vh;
-    background: #0e0e0e;
+.login-submit:hover {
+    background: #bce600;
 }
 
-.hero {
-    width: 100%;
-    padding: 2rem 3rem 4rem;
+.signup {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin-top: 25px;
+}
+
+.signup a {
+    color: #d4ff00;
+}
+
+.back {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back a {
+    color: #777;
+    font-size: 13px;
+}
+
+.back a:hover {
+    color: white;
+}
+
+footer {
+    background: #0e0e0e;
+    border-top: 1px solid #1a1a1a;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 13px;
+}
+
+footer a {
+    color: #777;
+    margin-left: 18px;
+}
+
+footer a:hover {
+    color: white;
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .login-container {
+        padding: 30px 22px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}    padding: 2rem 3rem 4rem;
     background: #caf300;
     overflow: hidden;
 }
