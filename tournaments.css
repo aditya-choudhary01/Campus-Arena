@@ -1,0 +1,184 @@
+.page-hero {
+    background: #d4ff00;
+    color: black;
+    padding: 42px 20px;
+}
+
+.page-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.page-hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.page-hero p {
+    max-width: 640px;
+}
+
+nav a.active {
+    color: white;
+}
+
+.filter-board {
+    position: relative;
+}
+
+.filter-board > input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.filter-row > span {
+    color: #999;
+    font-size: 13px;
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-chips label {
+    border: 1px solid #333;
+    background: #1c1c1c;
+    color: #ccc;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#filter-all:checked ~ .filter-row label[for="filter-all"],
+#filter-bgmi:checked ~ .filter-row label[for="filter-bgmi"],
+#filter-valorant:checked ~ .filter-row label[for="filter-valorant"],
+#filter-cs2:checked ~ .filter-row label[for="filter-cs2"],
+#filter-fc:checked ~ .filter-row label[for="filter-fc"] {
+    background: #d4ff00;
+    color: black;
+    border-color: #d4ff00;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.status {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.status.open {
+    background: rgba(212, 255, 0, 0.14);
+    color: #d4ff00;
+}
+
+.status.soon {
+    background: #2a2410;
+    color: #f0c75e;
+}
+
+.status.done {
+    background: #262626;
+    color: #888;
+}
+
+.card-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #d4ff00;
+    color: black;
+    padding: 9px;
+    margin-top: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.card-cta.ghost {
+    background: transparent;
+    color: #d4ff00;
+    border: 1px solid #3a3a3a;
+}
+
+.count-note {
+    color: #777;
+    font-size: 13px;
+}
+
+.closed-title {
+    margin-top: 20px;
+}
+
+.tournament-card.closed {
+    opacity: 0.85;
+}
+
+#filter-bgmi:checked ~ .tournament-grid .tournament-card:not([data-game="bgmi"]),
+#filter-valorant:checked ~ .tournament-grid .tournament-card:not([data-game="valorant"]),
+#filter-cs2:checked ~ .tournament-grid .tournament-card:not([data-game="cs2"]),
+#filter-fc:checked ~ .tournament-grid .tournament-card:not([data-game="fc"]) {
+    display: none;
+}
+
+.tourney-note {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.tourney-note h3 {
+    color: white;
+    margin-bottom: 6px;
+}
+
+.tourney-note p {
+    color: #999;
+    font-size: 14px;
+}
+
+.tourney-note a {
+    background: #d4ff00;
+    color: black;
+    padding: 10px 22px;
+    font-weight: 700;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+    .page-hero h1 {
+        font-size: 32px;
+    }
+
+    .tourney-note {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusArena - Tournaments</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tournaments.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <a href="index.html" class="logo">
+            Campus<span>Arena</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tournaments.html" class="active">Tournaments</a>
+            <a href="teammates.html">Find Teammate</a>
+            <a href="rules.html">Rules</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-hero">
+
+    <div class="hero-content">
+
+        <p class="page-kicker">College Esports Calendar</p>
+
+        <h1>Campus Tournaments</h1>
+
+        <p>
+            Browse upcoming cups, register with your college email, and compete
+            for prize pools across BGMI, Valorant, CS2, and EA Sports FC.
+        </p>
+
+    </div>
+
+</section>
+
+
+<main class="tournaments-page">
+
+    <div class="filter-board">
+
+        <input type="radio" name="game-filter" id="filter-all" checked>
+        <input type="radio" name="game-filter" id="filter-bgmi">
+        <input type="radio" name="game-filter" id="filter-valorant">
+        <input type="radio" name="game-filter" id="filter-cs2">
+        <input type="radio" name="game-filter" id="filter-fc">
+
+        <div class="filter-row">
+            <span>Filter by game</span>
+            <div class="filter-chips">
+                <label for="filter-all">All</label>
+                <label for="filter-bgmi">BGMI</label>
+                <label for="filter-valorant">Valorant</label>
+                <label for="filter-cs2">CS2</label>
+                <label for="filter-fc">EA Sports FC</label>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+            <span class="count-note">Open registration</span>
+        </div>
+
+        <div class="tournament-grid">
+
+            <article class="tournament-card" data-game="bgmi">
+                <div class="card-top">
+                    <span class="game">BGMI</span>
+                    <span class="status open">Open</span>
+                </div>
+                <h3>BGMI Freshers Cup</h3>
+                <p>📅 Date: Oct 15, 2026</p>
+                <p>🕕 Time: 7:00 PM IST</p>
+                <p>🎟️ Entry: Free</p>
+                <p>🏆 Prize Pool: ₹5,000</p>
+                <p>👥 Format: Squads · 4 matches</p>
+                <a href="login.html" class="card-cta">Register</a>
+            </article>
+
+            <article class="tournament-card" data-game="valorant">
+                <div class="card-top">
+                    <span class="game">Valorant</span>
+                    <span class="status open">Open</span>
+                </div>
+                <h3>Valorant Campus Clash</h3>
+                <p>📅 Date: Oct 18, 2026</p>
+                <p>🕕 Time: 6:00 PM IST</p>
+                <p>🎟️ Entry: Free</p>
+                <p>🏆 Prize Pool: ₹10,000</p>
+                <p>👥 Format: 5v5 · Single elimination</p>
+                <a href="login.html" class="card-cta">Register</a>
+            </article>
+
+            <article class="tournament-card" data-game="fc">
+                <div class="card-top">
+                    <span class="game">EA Sports FC</span>
+                    <span class="status open">Open</span>
+                </div>
+                <h3>FIFA Showdown</h3>
+                <p>📅 Date: Oct 22, 2026</p>
+                <p>🕕 Time: 5:30 PM IST</p>
+                <p>🎟️ Entry: Free</p>
+                <p>🏆 Prize Pool: ₹3,000</p>
+                <p>👥 Format: 1v1 · Best of 3</p>
+                <a href="login.html" class="card-cta">Register</a>
+            </article>
+
+            <article class="tournament-card" data-game="cs2">
+                <div class="card-top">
+                    <span class="game">Counter-Strike 2</span>
+                    <span class="status open">Open</span>
+                </div>
+                <h3>CS2 Inter-College Invitational</h3>
+                <p>📅 Date: Oct 29, 2026</p>
+                <p>🕕 Time: 6:00 PM IST</p>
+                <p>🎟️ Entry: Free</p>
+                <p>🏆 Prize Pool: ₹8,000</p>
+                <p>👥 Format: 5v5 · Bo1 groups, Bo3 finals</p>
+                <a href="login.html" class="card-cta">Register</a>
+            </article>
+
+            <article class="tournament-card" data-game="valorant">
+                <div class="card-top">
+                    <span class="game">Valorant</span>
+                    <span class="status soon">Filling fast</span>
+                </div>
+                <h3>Night Shift Scrims</h3>
+                <p>📅 Date: Nov 2, 2026</p>
+                <p>🕕 Time: 9:00 PM IST</p>
+                <p>🎟️ Entry: Free</p>
+                <p>🏆 Prize Pool: Practice points</p>
+                <p>👥 Format: 5v5 · Round robin</p>
+                <a href="login.html" class="card-cta">Register</a>
+            </article>
+
+            <article class="tournament-card" data-game="bgmi">
+                <div class="card-top">
+                    <span class="game">BGMI</span>
+                    <span class="status soon">Filling fast</span>
+                </div>
+                <h3>Hostel Wars: Erangel</h3>
+                <p>📅 Date: Nov 8, 2026</p>
+                <p>🕕 Time: 8:00 PM IST</p>
+                <p>🎟️ Entry: Free</p>
+                <p>🏆 Prize Pool: ₹4,000</p>
+                <p>👥 Format: Squads · Custom lobby</p>
+                <a href="login.html" class="card-cta">Register</a>
+            </article>
+
+        </div>
+
+
+        <div class="section-title closed-title">
+            <h2>Recently Completed</h2>
+            <span class="count-note">Results posted</span>
+        </div>
+
+        <div class="tournament-grid">
+
+            <article class="tournament-card closed" data-game="valorant">
+                <div class="card-top">
+                    <span class="game">Valorant</span>
+                    <span class="status done">Completed</span>
+                </div>
+                <h3>Monsoon Masters</h3>
+                <p>📅 Date: Aug 24, 2026</p>
+                <p>🏆 Champion: Phoenix</p>
+                <p>🥈 Runner-up: Alpha Strikers</p>
+                <p>Prize Pool: ₹7,500</p>
+                <a href="rules.html" class="card-cta ghost">View format</a>
+            </article>
+
+            <article class="tournament-card closed" data-game="bgmi">
+                <div class="card-top">
+                    <span class="game">BGMI</span>
+                    <span class="status done">Completed</span>
+                </div>
+                <h3>Summer Squad Showdown</h3>
+                <p>📅 Date: Aug 10, 2026</p>
+                <p>🏆 Champion: Viper Squad</p>
+                <p>🥈 Runner-up: Gods of War</p>
+                <p>Prize Pool: ₹6,000</p>
+                <a href="rules.html" class="card-cta ghost">View format</a>
+            </article>
+
+            <article class="tournament-card closed" data-game="cs2">
+                <div class="card-top">
+                    <span class="game">Counter-Strike 2</span>
+                    <span class="status done">Completed</span>
+                </div>
+                <h3>Freshers Open</h3>
+                <p>📅 Date: Jul 19, 2026</p>
+                <p>🏆 Champion: Titan Esports</p>
+                <p>🥈 Runner-up: Cyber Horde</p>
+                <p>Prize Pool: ₹5,000</p>
+                <a href="rules.html" class="card-cta ghost">View format</a>
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <section class="tourney-note">
+        <div>
+            <h3>Need a full squad before you register?</h3>
+            <p>Browse open players from your campus and lock a roster before match day.</p>
+        </div>
+        <a href="teammates.html">Find Teammates</a>
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 CampusArena - College Gaming Hub</p>
+
+    <div>
+        <a href="rules.html">Rules</a>
+        <a href="#">Contact</a>
+        <a href="#">Discord</a>
+    </div>
+
+</footer>
+
+</body>
+</html>

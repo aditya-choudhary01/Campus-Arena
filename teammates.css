@@ -1,0 +1,260 @@
+.page-hero {
+    background: #d4ff00;
+    color: black;
+    padding: 42px 20px;
+}
+
+.page-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.page-hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.page-hero p {
+    max-width: 640px;
+}
+
+nav a.active {
+    color: white;
+}
+
+.post-banner {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.post-banner h2 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.post-banner p {
+    color: #999;
+    font-size: 14px;
+    max-width: 620px;
+}
+
+.post-banner a {
+    background: #d4ff00;
+    color: black;
+    padding: 10px 22px;
+    font-weight: 700;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.filter-board {
+    position: relative;
+}
+
+.filter-board > input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.filter-row > span {
+    color: #999;
+    font-size: 13px;
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-chips label {
+    border: 1px solid #333;
+    background: #1c1c1c;
+    color: #ccc;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#mate-all:checked ~ .filter-row label[for="mate-all"],
+#mate-bgmi:checked ~ .filter-row label[for="mate-bgmi"],
+#mate-valorant:checked ~ .filter-row label[for="mate-valorant"],
+#mate-cs2:checked ~ .filter-row label[for="mate-cs2"],
+#mate-fc:checked ~ .filter-row label[for="mate-fc"] {
+    background: #d4ff00;
+    color: black;
+    border-color: #d4ff00;
+}
+
+.count-note {
+    color: #777;
+    font-size: 13px;
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.player-card {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.player-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: start;
+    margin-bottom: 14px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #d4ff00;
+    color: black;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-card h3 {
+    color: white;
+    font-size: 16px;
+}
+
+.college {
+    color: #888;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.role {
+    color: #d4ff00;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.blurb {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.player-card ul {
+    list-style: none;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.player-card li {
+    margin: 4px 0;
+}
+
+.card-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #d4ff00;
+    color: black;
+    padding: 9px;
+    margin-top: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+#mate-bgmi:checked ~ .player-grid .player-card:not([data-game="bgmi"]),
+#mate-valorant:checked ~ .player-grid .player-card:not([data-game="valorant"]),
+#mate-cs2:checked ~ .player-grid .player-card:not([data-game="cs2"]),
+#mate-fc:checked ~ .player-grid .player-card:not([data-game="fc"]) {
+    display: none;
+}
+
+.tips-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.tip {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.tip h3 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.tip p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.tip a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #d4ff00;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .player-grid,
+    .tips-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .page-hero h1 {
+        font-size: 32px;
+    }
+
+    .post-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .player-grid,
+    .tips-row {
+        grid-template-columns: 1fr;
+    }
+}

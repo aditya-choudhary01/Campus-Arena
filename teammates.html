@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusArena - Find Teammates</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="teammates.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <a href="index.html" class="logo">
+            Campus<span>Arena</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="teammates.html" class="active">Find Teammate</a>
+            <a href="rules.html">Rules</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-hero">
+
+    <div class="hero-content">
+
+        <p class="page-kicker">Squad Finder</p>
+
+        <h1>Find Teammates</h1>
+
+        <p>
+            Connect with players from your college, fill open roles, and register
+            as a complete roster for campus cups.
+        </p>
+
+    </div>
+
+</section>
+
+
+<main class="teammates-page">
+
+    <section class="post-banner">
+        <div>
+            <h2>Looking for a squad?</h2>
+            <p>
+                Log in with your college email to post your rank, role, and
+                availability. Organizers can also list open slots for club teams.
+            </p>
+        </div>
+        <a href="login.html">Post a request</a>
+    </section>
+
+
+    <div class="filter-board">
+
+        <input type="radio" name="mate-filter" id="mate-all" checked>
+        <input type="radio" name="mate-filter" id="mate-bgmi">
+        <input type="radio" name="mate-filter" id="mate-valorant">
+        <input type="radio" name="mate-filter" id="mate-cs2">
+        <input type="radio" name="mate-filter" id="mate-fc">
+
+        <div class="filter-row">
+            <span>Filter by game</span>
+            <div class="filter-chips">
+                <label for="mate-all">All</label>
+                <label for="mate-bgmi">BGMI</label>
+                <label for="mate-valorant">Valorant</label>
+                <label for="mate-cs2">CS2</label>
+                <label for="mate-fc">EA Sports FC</label>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h2>Open Players</h2>
+            <span class="count-note">Campus verified</span>
+        </div>
+
+        <div class="player-grid">
+
+            <article class="player-card" data-game="valorant">
+                <div class="player-head">
+                    <div class="avatar">AK</div>
+                    <div>
+                        <h3>AxeL_Knight</h3>
+                        <p class="college">NSUT · Delhi</p>
+                    </div>
+                    <span class="game">Valorant</span>
+                </div>
+                <p class="role">Role: Duelist · Immortal 2</p>
+                <p class="blurb">Looking for a full 5-stack for Campus Clash. IGL preferred. Practice 8–11 PM.</p>
+                <ul>
+                    <li>Needs: IGL, Controller, Sentinel</li>
+                    <li>Available: Weeknights</li>
+                </ul>
+                <a href="login.html" class="card-cta">Invite to squad</a>
+            </article>
+
+            <article class="player-card" data-game="bgmi">
+                <div class="player-head">
+                    <div class="avatar">VZ</div>
+                    <div>
+                        <h3>VortexZen</h3>
+                        <p class="college">DTU · Delhi</p>
+                    </div>
+                    <span class="game">BGMI</span>
+                </div>
+                <p class="role">Role: IGL · Ace Dominator</p>
+                <p class="blurb">Need one fragger and one support for Freshers Cup. Mic required.</p>
+                <ul>
+                    <li>Needs: Fragger, Support</li>
+                    <li>Available: Fri–Sun</li>
+                </ul>
+                <a href="login.html" class="card-cta">Invite to squad</a>
+            </article>
+
+            <article class="player-card" data-game="cs2">
+                <div class="player-head">
+                    <div class="avatar">SN</div>
+                    <div>
+                        <h3>ShadowNova</h3>
+                        <p class="college">IIIT Hyderabad</p>
+                    </div>
+                    <span class="game">CS2</span>
+                </div>
+                <p class="role">Role: AWPer · 18k Premier</p>
+                <p class="blurb">Open slot for Invitational. Looking for a rifler who can take mid control.</p>
+                <ul>
+                    <li>Needs: Rifler, Support</li>
+                    <li>Available: Evenings</li>
+                </ul>
+                <a href="login.html" class="card-cta">Invite to squad</a>
+            </article>
+
+            <article class="player-card" data-game="fc">
+                <div class="player-head">
+                    <div class="avatar">DK</div>
+                    <div>
+                        <h3>DarkKaiser</h3>
+                        <p class="college">BITS Pilani</p>
+                    </div>
+                    <span class="game">EA Sports FC</span>
+                </div>
+                <p class="role">Role: 1v1 · Division 2</p>
+                <p class="blurb">Want a practice partner before FIFA Showdown. Same college preferred, not required.</p>
+                <ul>
+                    <li>Needs: Sparring partner</li>
+                    <li>Available: Weekends</li>
+                </ul>
+                <a href="login.html" class="card-cta">Invite to squad</a>
+            </article>
+
+            <article class="player-card" data-game="valorant">
+                <div class="player-head">
+                    <div class="avatar">CY</div>
+                    <div>
+                        <h3>CyberYuki</h3>
+                        <p class="college">VIT Vellore</p>
+                    </div>
+                    <span class="game">Valorant</span>
+                </div>
+                <p class="role">Role: Sentinel · Diamond 3</p>
+                <p class="blurb">New to campus scene. Looking for a chill stack that still wants to win scrims.</p>
+                <ul>
+                    <li>Needs: Full team</li>
+                    <li>Available: After 7 PM</li>
+                </ul>
+                <a href="login.html" class="card-cta">Invite to squad</a>
+            </article>
+
+            <article class="player-card" data-game="bgmi">
+                <div class="player-head">
+                    <div class="avatar">RV</div>
+                    <div>
+                        <h3>RogueVibe</h3>
+                        <p class="college">SRM Chennai</p>
+                    </div>
+                    <span class="game">BGMI</span>
+                </div>
+                <p class="role">Role: Fragger · Crown</p>
+                <p class="blurb">Can IGL if needed. Looking for a consistent four for Hostel Wars.</p>
+                <ul>
+                    <li>Needs: IGL, Sniper, Support</li>
+                    <li>Available: Late night</li>
+                </ul>
+                <a href="login.html" class="card-cta">Invite to squad</a>
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <section class="tips-row">
+
+        <div class="tip">
+            <h3>Use a college email</h3>
+            <p>Squad invites stay on CampusArena so organizers can verify every player before match day.</p>
+        </div>
+
+        <div class="tip">
+            <h3>Lock roles early</h3>
+            <p>List IGL, fragger, support, or agent role so teammates know what slot you fill.</p>
+        </div>
+
+        <div class="tip">
+            <h3>Read the rulebook</h3>
+            <p>Substitutes, check-in windows, and roster limits are covered on the rules page.</p>
+            <a href="rules.html">Open rules →</a>
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 CampusArena - College Gaming Hub</p>
+
+    <div>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="#">Contact</a>
+        <a href="#">Discord</a>
+    </div>
+
+</footer>
+
+</body>
+</html>
