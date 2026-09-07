@@ -1,40 +1,327 @@
-:root {
-            --neon-lime: #ccff00;
-            --lime-hover: #b8e600;
-            --bg-dark: #0a0a0a;
-            --surface-dark: #121212;
-            --card-dark: #161616;
-            --border-dark: #242424;
-            --text-light: #f5f5f7;
-            --text-dim: #9ba1ad;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #121212;
+    color: #e5e5e5;
+}
 
-        
-        header {
-            background-color: #000000;
-            padding: 18px 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #1f1f1f;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+a {
+    text-decoration: none;
+}
 
+header {
+    background: #181818;
+    border-bottom: 1px solid #2e2e2e;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    max-width: 1024px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #d4ff00;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    color: #aaa;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.login-btn {
+    background: #d4ff00;
+    color: black !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.hero {
+    background: #d4ff00;
+    color: black;
+    padding: 55px 20px;
+}
+
+.hero-content {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 12px 22px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.primary-btn {
+    background: black;
+    color: white;
+}
+
+.secondary-btn {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+main {
+    max-width: 1024px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #282828;
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+}
+
+.section-title h2,
+.two-column h2 {
+    color: white;
+    font-size: 20px;
+}
+
+.section-title a {
+    color: #d4ff00;
+    font-size: 13px;
+}
+
+.tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tournament-card {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.game {
+    color: #d4ff00;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tournament-card h3 {
+    color: white;
+    margin: 7px 0 12px;
+}
+
+.tournament-card p {
+    color: #aaa;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.tournament-card button {
+    width: 100%;
+    border: none;
+    background: #d4ff00;
+    color: black;
+    padding: 9px;
+    margin-top: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.two-column h2 {
+    border-bottom: 1px solid #282828;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.match {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.match span {
+    color: #d4ff00;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.match small {
+    float: right;
+    color: #888;
+}
+
+.match strong {
+    display: block;
+    color: white;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1c1c1c;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #2a2a2a;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    background: #262626;
+    color: #ccc;
+}
+
+td {
+    color: #aaa;
+}
+
+td:nth-child(2) {
+    color: white;
+    font-weight: 600;
+}
+
+td:first-child {
+    color: #d4ff00;
+    font-weight: 700;
+}
+
+.teammates {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teammates h3 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.teammates p {
+    color: #999;
+    font-size: 14px;
+}
+
+.teammates a {
+    background: #d4ff00;
+    color: black;
+    padding: 10px 22px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+footer {
+    background: #181818;
+    border-top: 1px solid #2e2e2e;
+    padding: 25px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 13px;
+}
+
+footer a {
+    color: #777;
+    margin-left: 20px;
+}
+
+@media (max-width: 700px) {
+
+    nav a:not(.login-btn) {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .tournament-grid,
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .teammates {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
         .logo-area {
             display: flex;
             align-items: center;
