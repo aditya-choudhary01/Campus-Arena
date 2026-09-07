@@ -56,7 +56,8 @@ nav a {
     font-size: 14px;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
     color: white;
 }
 
