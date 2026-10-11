@@ -242,6 +242,6 @@ footer a:hover {
     footer {
         flex-direction: column;
         gap: 12px;
-        text-align: center;
+        text-align:center;
     }
 }
