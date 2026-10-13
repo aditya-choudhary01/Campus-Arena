@@ -181,6 +181,11 @@ section {
     margin-top: 18px;
     font-weight: 700;
     border-radius: 4px;
+    cursor: pointer;
+}
+
+.tournament-card button:hover {
+    background: #c2eb00;
 }
 
 .two-column {
