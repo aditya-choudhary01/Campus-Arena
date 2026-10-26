@@ -1,0 +1,215 @@
+.form-page-main {
+    max-width: 560px;
+}
+
+.form-card {
+    background: #171717;
+    border: 1px solid #282828;
+    border-radius: 12px;
+    padding: 32px;
+}
+
+.form-card h2 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.form-card .lead {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #101010;
+    border: 1px solid #2e2e2e;
+    color: white;
+    border-radius: 6px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #d4ff00;
+}
+
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+    border-color: #ff6b6b;
+}
+
+.error-text {
+    color: #ff8a8a;
+    font-size: 12px;
+    min-height: 16px;
+    margin-top: 6px;
+}
+
+.char-count {
+    color: #888;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.password-row {
+    display: flex;
+    gap: 8px;
+}
+
+.password-row input {
+    flex: 1;
+}
+
+.toggle-btn {
+    border: 1px solid #333;
+    background: #1c1c1c;
+    color: #ddd;
+    padding: 0 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #ccc;
+    font-size: 13px;
+}
+
+.check-row input {
+    width: auto;
+    margin-top: 3px;
+}
+
+.form-submit {
+    width: 100%;
+    padding: 13px;
+    background: #d4ff00;
+    border: none;
+    color: black;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.form-submit:hover {
+    background: #bce600;
+}
+
+.form-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.form-message {
+    margin-bottom: 18px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-message.success {
+    background: rgba(212, 255, 0, 0.12);
+    border: 1px solid #d4ff00;
+    color: #eaff8a;
+}
+
+.form-message.error {
+    background: rgba(255, 107, 107, 0.12);
+    border: 1px solid #ff6b6b;
+    color: #ffb4b4;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.about-card {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    padding: 22px;
+    border-radius: 6px;
+}
+
+.about-card h3 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.about-card p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 12px;
+    background: #101010;
+    border: 1px solid #2e2e2e;
+    color: white;
+    border-radius: 6px;
+}
+
+.hidden-by-search {
+    display: none !important;
+}
+
+.tournament-card .card-cta,
+.tournament-card a.card-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: #d4ff00;
+    color: black;
+    padding: 9px;
+    margin-top: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.page-hero .hero-buttons {
+    margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 22px 16px;
+    }
+}

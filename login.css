@@ -112,6 +112,7 @@ h1 {
     border: none;
     color: #888;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .tab-btn.active {

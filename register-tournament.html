@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusArena - Tournament Registration</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tournaments.css">
+    <link rel="stylesheet" href="forms.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">Campus<span>Arena</span></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="teammates.html">Find Teammate</a>
+            <a href="rules.html">Rules</a>
+            <a href="about.html">About</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="hero-content">
+        <p class="page-kicker">Open registration</p>
+        <h1>Register for a cup</h1>
+        <p>
+            Fill this form with your college email. The entry is saved to
+            data/registrations.json when the local server is running.
+        </p>
+    </div>
+</section>
+
+<main class="form-page-main">
+    <div class="form-card">
+        <h2>Tournament form</h2>
+        <p class="lead">Need a full squad first? <a href="teammates.html" style="color:#d4ff00;">Find teammates</a>.</p>
+
+        <p id="form-message" class="form-message" hidden></p>
+
+        <form id="tournament-form" novalidate>
+            <div class="form-group">
+                <label for="name">Full name</label>
+                <input type="text" id="name">
+                <p class="error-text" id="name-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="gamer-tag">Gamer tag</label>
+                <input type="text" id="gamer-tag">
+                <p class="error-text" id="gamer-tag-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="college">College</label>
+                <input type="text" id="college">
+                <p class="error-text" id="college-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">College email</label>
+                <input type="email" id="email" placeholder="you@college.edu">
+                <p class="error-text" id="email-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="event-name">Tournament</label>
+                <select id="event-name">
+                    <option value="">Select a tournament</option>
+                    <option value="BGMI Freshers Cup">BGMI Freshers Cup</option>
+                    <option value="Valorant Campus Clash">Valorant Campus Clash</option>
+                    <option value="FIFA Showdown">FIFA Showdown</option>
+                    <option value="CS2 Inter-College Invitational">CS2 Inter-College Invitational</option>
+                    <option value="Night Shift Scrims">Night Shift Scrims</option>
+                    <option value="Hostel Wars: Erangel">Hostel Wars: Erangel</option>
+                </select>
+                <p class="error-text" id="event-name-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="team-name">Team name</label>
+                <input type="text" id="team-name" placeholder="e.g. Phoenix">
+                <p class="error-text" id="team-name-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label class="check-row" for="agree-rules">
+                    <input type="checkbox" id="agree-rules">
+                    <span>I have read the <a href="rules.html" style="color:#d4ff00;">rules</a> and my roster is college-only.</span>
+                </label>
+                <p class="error-text" id="agree-rules-error"></p>
+            </div>
+
+            <button type="submit" class="form-submit" id="register-submit">Submit registration</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 CampusArena - College Gaming Hub</p>
+    <div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/tournament-register.js"></script>
+</body>
+</html>

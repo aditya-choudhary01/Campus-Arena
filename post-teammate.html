@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusArena - Post a Request</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tournaments.css">
+    <link rel="stylesheet" href="forms.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">Campus<span>Arena</span></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="teammates.html" class="active">Find Teammate</a>
+            <a href="rules.html">Rules</a>
+            <a href="about.html">About</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="hero-content">
+        <p class="page-kicker">Squad Finder</p>
+        <h1>Post a teammate request</h1>
+        <p>
+            Tell players your game, role, and when you can practice.
+            New posts are saved to data/teammate-posts.json and shown on Find Teammates.
+        </p>
+    </div>
+</section>
+
+<main class="form-page-main">
+    <div class="form-card">
+        <h2>Open a slot</h2>
+        <p class="lead">Keep the intro short. Other players will contact you through the desk.</p>
+
+        <p id="form-message" class="form-message" hidden></p>
+
+        <form id="teammate-form" novalidate>
+            <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name">
+                <p class="error-text" id="name-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="gamer-tag">Gamer tag</label>
+                <input type="text" id="gamer-tag">
+                <p class="error-text" id="gamer-tag-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="college">College</label>
+                <input type="text" id="college">
+                <p class="error-text" id="college-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">College email</label>
+                <input type="email" id="email">
+                <p class="error-text" id="email-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="game">Game</label>
+                <select id="game">
+                    <option value="">Select a game</option>
+                    <option value="BGMI">BGMI</option>
+                    <option value="Valorant">Valorant</option>
+                    <option value="CS2">CS2</option>
+                    <option value="EA Sports FC">EA Sports FC</option>
+                </select>
+                <p class="error-text" id="game-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Your role</label>
+                <input type="text" id="role" placeholder="e.g. IGL, Duelist, AWPer">
+                <p class="error-text" id="role-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="looking-for">Looking for</label>
+                <input type="text" id="looking-for" placeholder="e.g. Sentinel and Controller">
+                <p class="error-text" id="looking-for-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability</label>
+                <input type="text" id="availability" placeholder="e.g. Weeknights after 8 PM">
+                <p class="error-text" id="availability-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="blurb">Short intro</label>
+                <textarea id="blurb" maxlength="200"></textarea>
+                <p class="char-count" id="char-count"></p>
+                <p class="error-text" id="blurb-error"></p>
+            </div>
+
+            <button type="submit" class="form-submit" id="post-submit">Post request</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 CampusArena - College Gaming Hub</p>
+    <div>
+        <a href="teammates.html">Find Teammate</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/teammate-post.js"></script>
+</body>
+</html>

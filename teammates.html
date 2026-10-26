@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="teammates.css">
+    <link rel="stylesheet" href="forms.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
@@ -26,6 +27,7 @@
             <a href="tournaments.html">Tournaments</a>
             <a href="teammates.html" class="active">Find Teammate</a>
             <a href="rules.html">Rules</a>
+            <a href="about.html">About</a>
             <a href="login.html" class="login-btn">Login</a>
         </nav>
 
@@ -62,7 +64,7 @@
                 availability. Organizers can also list open slots for club teams.
             </p>
         </div>
-        <a href="login.html">Post a request</a>
+        <a href="post-teammate.html">Post a request</a>
     </section>
 
 
@@ -76,6 +78,7 @@
 
         <div class="filter-row">
             <span>Filter by game</span>
+            <input type="search" id="player-search" class="search-box" placeholder="Search players...">
             <div class="filter-chips">
                 <label for="mate-all">All</label>
                 <label for="mate-bgmi">BGMI</label>
@@ -90,7 +93,7 @@
             <span class="count-note">Campus verified</span>
         </div>
 
-        <div class="player-grid">
+        <div class="player-grid" id="player-grid">
 
             <article class="player-card" data-game="valorant">
                 <div class="player-head">
@@ -107,7 +110,7 @@
                     <li>Needs: IGL, Controller, Sentinel</li>
                     <li>Available: Weeknights</li>
                 </ul>
-                <a href="login.html" class="card-cta">Invite to squad</a>
+                <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
             <article class="player-card" data-game="bgmi">
@@ -125,7 +128,7 @@
                     <li>Needs: Fragger, Support</li>
                     <li>Available: Fri–Sun</li>
                 </ul>
-                <a href="login.html" class="card-cta">Invite to squad</a>
+                <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
             <article class="player-card" data-game="cs2">
@@ -143,7 +146,7 @@
                     <li>Needs: Rifler, Support</li>
                     <li>Available: Evenings</li>
                 </ul>
-                <a href="login.html" class="card-cta">Invite to squad</a>
+                <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
             <article class="player-card" data-game="fc">
@@ -161,7 +164,7 @@
                     <li>Needs: Sparring partner</li>
                     <li>Available: Weekends</li>
                 </ul>
-                <a href="login.html" class="card-cta">Invite to squad</a>
+                <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
             <article class="player-card" data-game="valorant">
@@ -179,7 +182,7 @@
                     <li>Needs: Full team</li>
                     <li>Available: After 7 PM</li>
                 </ul>
-                <a href="login.html" class="card-cta">Invite to squad</a>
+                <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
             <article class="player-card" data-game="bgmi">
@@ -197,7 +200,7 @@
                     <li>Needs: IGL, Sniper, Support</li>
                     <li>Available: Late night</li>
                 </ul>
-                <a href="login.html" class="card-cta">Invite to squad</a>
+                <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
         </div>
@@ -233,12 +236,13 @@
     <p>© 2026 CampusArena - College Gaming Hub</p>
 
     <div>
-        <a href="tournaments.html">Tournaments</a>
-        <a href="#">Contact</a>
-        <a href="#">Discord</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="post-teammate.html">Post a request</a>
     </div>
 
 </footer>
 
+<script src="js/teammates-page.js"></script>
 </body>
 </html>

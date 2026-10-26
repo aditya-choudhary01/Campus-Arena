@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusArena - Create Account</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="forms.css">
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">Campus<span>Arena</span></a>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="teammates.html">Find Teammate</a>
+        <a href="rules.html">Rules</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+    </nav>
+    <a href="login.html" class="nav-btn">Login</a>
+</header>
+
+<main>
+    <div class="login-container">
+        <span class="brand-tag">New player</span>
+        <h1>Create Account</h1>
+        <p class="subtitle">Use your college email. The account is saved to data/users.json on the local server.</p>
+
+        <p id="form-message" class="form-message" hidden></p>
+
+        <form id="register-form" novalidate>
+            <div class="form-group">
+                <label for="name">Full name</label>
+                <input type="text" id="name" maxlength="60">
+                <p class="error-text" id="name-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="gamer-tag">Gamer tag</label>
+                <input type="text" id="gamer-tag" maxlength="20" placeholder="e.g. AxeL_Knight">
+                <p class="error-text" id="gamer-tag-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="college">College</label>
+                <input type="text" id="college" placeholder="e.g. NSUT Delhi">
+                <p class="error-text" id="college-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">College email</label>
+                <input type="email" id="email" placeholder="you@college.edu">
+                <p class="error-text" id="email-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Account type</label>
+                <select id="role">
+                    <option value="">Select type</option>
+                    <option value="Student Player">Student Player</option>
+                    <option value="Club Organizer">Club Organizer</option>
+                </select>
+                <p class="error-text" id="role-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-row">
+                    <input type="password" id="password" minlength="6">
+                    <button type="button" class="toggle-btn" id="toggle-password">Show</button>
+                </div>
+                <p class="error-text" id="password-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm password</label>
+                <input type="password" id="confirm-password">
+                <p class="error-text" id="confirm-password-error"></p>
+            </div>
+
+            <button type="submit" class="login-submit" id="register-submit">Create account</button>
+        </form>
+
+        <div class="signup">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+        <div class="back">
+            <a href="index.html">← Back to Homepage</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div>© 2026 CampusArena - College Gaming Hub</div>
+    <div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

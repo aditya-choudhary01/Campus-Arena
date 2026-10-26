@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusArena - Contact</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tournaments.css">
+    <link rel="stylesheet" href="forms.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">Campus<span>Arena</span></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="teammates.html">Find Teammate</a>
+            <a href="rules.html">Rules</a>
+            <a href="about.html">About</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="hero-content">
+        <p class="page-kicker">Help Desk</p>
+        <h1>Contact</h1>
+        <p>
+            Send a question about events, disputes, or club hosting.
+            The form is checked in the browser, then saved to data/contacts.json.
+        </p>
+    </div>
+</section>
+
+<main class="form-page-main">
+    <div class="form-card">
+        <h2>Write to organizers</h2>
+        <p class="lead">All fields are required. Keep it short and include your college email.</p>
+
+        <p id="form-message" class="form-message" hidden></p>
+
+        <form id="contact-form" novalidate>
+            <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" maxlength="60">
+                <p class="error-text" id="name-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="you@college.edu">
+                <p class="error-text" id="email-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <select id="topic">
+                    <option value="">Select a topic</option>
+                    <option value="Tournament question">Tournament question</option>
+                    <option value="Teammate help">Teammate help</option>
+                    <option value="Rules / dispute">Rules / dispute</option>
+                    <option value="Host an event">Host an event</option>
+                    <option value="Other">Other</option>
+                </select>
+                <p class="error-text" id="topic-error"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" maxlength="500"></textarea>
+                <p class="char-count" id="char-count"></p>
+                <p class="error-text" id="message-error"></p>
+            </div>
+
+            <button type="submit" class="form-submit" id="contact-submit">Send message</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 CampusArena - College Gaming Hub</p>
+    <div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

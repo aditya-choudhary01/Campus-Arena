@@ -11,6 +11,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="forms.css">
 
 </head>
 
@@ -41,13 +42,17 @@
             Rules
         </a>
 
+        <a href="about.html">
+            About
+        </a>
+
         <a href="login.html" class="active">
             Login
         </a>
 
     </nav>
 
-    <a href="#" class="nav-btn">
+    <a href="register.html" class="nav-btn">
         Register Free
     </a>
 
@@ -73,18 +78,21 @@
 
         <div class="tab-group">
 
-            <button class="tab-btn active">
+            <button type="button" class="tab-btn active" id="tab-student">
                 Student Player
             </button>
 
-            <button class="tab-btn">
+            <button type="button" class="tab-btn" id="tab-organizer">
                 Club Organizer
             </button>
 
         </div>
 
+        <p id="form-message" class="form-message" hidden></p>
 
-        <form>
+        <form id="login-form" novalidate>
+
+            <input type="hidden" id="role" value="Student Player">
 
             <div class="form-group">
 
@@ -96,8 +104,8 @@
                     type="email"
                     id="email"
                     placeholder="e.g. yourname@college.edu"
-                    required
                 >
+                <p class="error-text" id="email-error"></p>
 
             </div>
 
@@ -108,12 +116,15 @@
                     Password
                 </label>
 
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter your password"
-                    required
-                >
+                <div class="password-row">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                    >
+                    <button type="button" class="toggle-btn" id="toggle-password">Show</button>
+                </div>
+                <p class="error-text" id="password-error"></p>
 
             </div>
 
@@ -121,18 +132,18 @@
             <div class="form-options">
 
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" id="remember">
                     Remember me
                 </label>
 
-                <a href="#">
+                <a href="forgot-password.html">
                     Forgot password?
                 </a>
 
             </div>
 
 
-            <button type="submit" class="login-submit">
+            <button type="submit" class="login-submit" id="login-submit">
                 Login to CampusArena
             </button>
 
@@ -143,7 +154,7 @@
 
             New to campus tournaments?
 
-            <a href="#">
+            <a href="register.html">
                 Create Player Account
             </a>
 
@@ -171,21 +182,23 @@
 
     <div>
 
-        <a href="index.html">
-            Home
+        <a href="about.html">
+            About
         </a>
 
-        <a href="#">
+        <a href="contact.html">
             Contact
         </a>
 
-        <a href="#">
-            Discord
+        <a href="register.html">
+            Register
         </a>
 
     </div>
 
 </footer>
 
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
