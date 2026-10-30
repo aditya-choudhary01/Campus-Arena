@@ -219,3 +219,24 @@
     color: #f0c75e;
     font-weight: 700;
 }
+
+
+/* Light theme: forms and shared content cards */
+body.light-mode .form-card,
+body.light-mode .about-card { background: #fff; border-color: #dfe3e8; }
+body.light-mode .form-card h2,
+body.light-mode .about-card h3 { color: #20242a; }
+body.light-mode .form-card .lead,
+body.light-mode .about-card p { color: #626b76; }
+body.light-mode .form-group label,
+body.light-mode .check-row { color: #424a54; }
+body.light-mode .form-group input,
+body.light-mode .form-group select,
+body.light-mode .form-group textarea,
+body.light-mode .search-box { background: #fff; color: #20242a; border-color: #cfd6dd; }
+body.light-mode .form-group input::placeholder,
+body.light-mode .form-group textarea::placeholder,
+body.light-mode .search-box::placeholder { color: #89919b; }
+body.light-mode .toggle-btn { background: #f2f4f6; color: #353d47; border-color: #cfd6dd; }
+body.light-mode .char-count { color: #68717c; }
+body.light-mode .form-message.success { background: #f1f8d8; border-color: #a5c900; color: #405000; }

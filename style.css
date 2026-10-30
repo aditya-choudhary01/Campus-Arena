@@ -328,3 +328,51 @@ footer a {
         text-align: center;
     }
 }
+
+/* Light theme: shared layout and homepage */
+.theme-toggle {
+    background: transparent;
+    color: #d4ff00;
+    border: 1px solid #555;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.theme-toggle:hover {
+    background: #d4ff00;
+    color: #111;
+    border-color: #d4ff00;
+}
+body.light-mode { background: #f4f6f8; color: #24272c; }
+body.light-mode header { background: #fff; border-bottom-color: #dfe3e8; }
+body.light-mode .logo { color: #20242a; }
+body.light-mode nav a { color: #606873; }
+body.light-mode nav a:hover,
+body.light-mode nav a.active { color: #171a1f; }
+body.light-mode .section-title,
+body.light-mode .two-column h2 { border-color: #dfe3e8; }
+body.light-mode .section-title h2,
+body.light-mode .two-column h2 { color: #20242a; }
+body.light-mode .tournament-card,
+body.light-mode .match,
+body.light-mode .teammates,
+body.light-mode table { background: #fff; border-color: #dfe3e8; }
+body.light-mode .tournament-card h3,
+body.light-mode .teammates h3,
+body.light-mode .match strong { color: #20242a; }
+body.light-mode .tournament-card p,
+body.light-mode .teammates p,
+body.light-mode .match small { color: #626b76; }
+body.light-mode table th { background: #edf0f3; color: #333b45; }
+body.light-mode table td { border-bottom-color: #e1e5e9; color: #626b76; }
+body.light-mode table td:nth-child(2) { color: #20242a; }
+body.light-mode footer { background: #fff; border-top-color: #dfe3e8; color: #626b76; }
+body.light-mode footer a { color: #626b76; }
+body.light-mode footer a:hover { color: #171a1f; }
+@media (max-width: 700px) {
+    .theme-toggle { padding: 7px 9px; font-size: 11px; }
+}

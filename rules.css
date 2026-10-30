@@ -171,3 +171,19 @@ nav a.active {
         font-size: 32px;
     }
 }
+
+
+/* Light theme: rules page */
+body.light-mode .rules-nav,
+body.light-mode .format-grid article,
+body.light-mode .rules-cta { background: #fff; border-color: #dfe3e8; }
+body.light-mode .rules-nav p { color: #68717c; }
+body.light-mode .rules-nav a { color: #626b76; border-bottom-color: #e1e5e9; }
+body.light-mode .rules-nav a:hover { color: #526300; }
+body.light-mode .rules-body h2,
+body.light-mode .format-grid h3,
+body.light-mode .rules-cta h3 { color: #20242a; border-bottom-color: #dfe3e8; }
+body.light-mode .rules-body p,
+body.light-mode .rules-body ul,
+body.light-mode .format-grid p,
+body.light-mode .rules-cta p { color: #626b76; }

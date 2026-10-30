@@ -220,3 +220,18 @@ nav a.active {
 .empty-state[hidden] {
     display: none;
 }
+
+
+/* Light theme: tournaments */
+body.light-mode .filter-row > span,
+body.light-mode .count-note { color: #626b76; }
+body.light-mode .filter-chips label { background: #fff; color: #4b535d; border-color: #d5dae0; }
+body.light-mode .status.done { background: #e9edf1; color: #626b76; }
+body.light-mode .tournament-card .favorite-btn { background: #f5f7f9; color: #59616b; border-color: #d5dae0; }
+body.light-mode .tournament-card .favorite-btn:hover,
+body.light-mode .tournament-card .favorite-btn.favorite-active { color: #526300; border-color: #a5c900; }
+body.light-mode .tournament-card .favorite-btn.favorite-active { background: #f1f8d8; }
+body.light-mode .empty-state { color: #535d68; background: #fff; border-color: #ccd3da; }
+body.light-mode .tourney-note { background: #fff; border-color: #dfe3e8; }
+body.light-mode .tourney-note h3 { color: #20242a; }
+body.light-mode .tourney-note p { color: #626b76; }

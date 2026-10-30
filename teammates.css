@@ -296,3 +296,25 @@ nav a.active {
 .empty-state[hidden] {
     display: none;
 }
+
+
+/* Light theme: teammate finder */
+body.light-mode .post-banner,
+body.light-mode .player-card,
+body.light-mode .tip { background: #fff; border-color: #dfe3e8; }
+body.light-mode .post-banner h2,
+body.light-mode .player-card h3,
+body.light-mode .tip h3 { color: #20242a; }
+body.light-mode .post-banner p,
+body.light-mode .blurb,
+body.light-mode .tip p { color: #626b76; }
+body.light-mode .college,
+body.light-mode .player-card ul,
+body.light-mode .filter-row > span,
+body.light-mode .count-note { color: #68717c; }
+body.light-mode .filter-chips label { background: #fff; color: #4b535d; border-color: #d5dae0; }
+body.light-mode .player-card .favorite-btn { background: #f5f7f9; color: #59616b; border-color: #d5dae0; }
+body.light-mode .player-card .favorite-btn:hover,
+body.light-mode .player-card .favorite-btn.favorite-active { color: #526300; border-color: #a5c900; }
+body.light-mode .player-card .favorite-btn.favorite-active { background: #f1f8d8; }
+body.light-mode .empty-state { color: #535d68; background: #fff; border-color: #ccd3da; }

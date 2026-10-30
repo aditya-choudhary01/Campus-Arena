@@ -245,3 +245,50 @@ footer a:hover {
         text-align:center;
     }
 }
+
+/* Theme toggle for account pages */
+.theme-toggle {
+    background: transparent;
+    color: #d4ff00;
+    border: 1px solid #555;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.theme-toggle:hover { background: #d4ff00; color: #111; border-color: #d4ff00; }
+
+/* Light theme: login, registration and password reset pages */
+body.light-mode { background: #f4f6f8; color: #24272c; }
+body.light-mode header,
+body.light-mode footer { background: #fff; border-color: #dfe3e8; }
+body.light-mode .logo { color: #20242a; }
+body.light-mode nav a { color: #606873; }
+body.light-mode nav a:hover,
+body.light-mode nav a.active { color: #20242a; }
+body.light-mode .nav-btn { color: #343b44; border-color: #d0d6dd; }
+body.light-mode .login-container { background: #fff; border-color: #dfe3e8; }
+body.light-mode h1 { color: #20242a; }
+body.light-mode .subtitle { color: #626b76; }
+body.light-mode .tab-group { background: #f0f2f4; }
+body.light-mode .tab-btn { color: #68717c; }
+body.light-mode .tab-btn.active { background: #fff; color: #20242a; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+body.light-mode .form-group label { color: #424a54; }
+body.light-mode .form-group input { background: #fff; color: #20242a; border-color: #cfd6dd; }
+body.light-mode .form-group input::placeholder { color: #89919b; }
+body.light-mode .form-options,
+body.light-mode .form-options a,
+body.light-mode .signup,
+body.light-mode .back a,
+body.light-mode footer,
+body.light-mode footer a { color: #626b76; }
+body.light-mode .form-options a:hover,
+body.light-mode .back a:hover,
+body.light-mode footer a:hover { color: #20242a; }
+@media (max-width: 600px) {
+    nav { display: flex; gap: 0; }
+    nav a { display: none; }
+}
