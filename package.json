@@ -1,9 +1,0 @@
-{
-  "name": "campus-arena",
-  "version": "1.0.0",
-  "description": "Beginner campus esports site that saves form data to local JSON files",
-  "main": "server.py",
-  "scripts": {
-    "start": "python3 server.py"
-  }
-}
