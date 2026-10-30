@@ -1,0 +1,86 @@
+[
+    {
+        "gamerTag": "AxeL_Knight",
+        "initials": "AK",
+        "college": "NSUT · Delhi",
+        "game": "valorant",
+        "gameName": "Valorant",
+        "role": "Duelist · Immortal 2",
+        "blurb": "Looking for a full 5-stack for Campus Clash. IGL preferred. Practice 8–11 PM.",
+        "needs": [
+            "IGL",
+            "Controller",
+            "Sentinel"
+        ],
+        "availability": "Weeknights"
+    },
+    {
+        "gamerTag": "VortexZen",
+        "initials": "VZ",
+        "college": "DTU · Delhi",
+        "game": "bgmi",
+        "gameName": "BGMI",
+        "role": "IGL · Ace Dominator",
+        "blurb": "Need one fragger and one support for Freshers Cup. Mic required.",
+        "needs": [
+            "Fragger",
+            "Support"
+        ],
+        "availability": "Fri–Sun"
+    },
+    {
+        "gamerTag": "ShadowNova",
+        "initials": "SN",
+        "college": "IIIT Hyderabad",
+        "game": "cs2",
+        "gameName": "CS2",
+        "role": "AWPer · 18k Premier",
+        "blurb": "Open slot for Invitational. Looking for a rifler who can take mid control.",
+        "needs": [
+            "Rifler",
+            "Support"
+        ],
+        "availability": "Evenings"
+    },
+    {
+        "gamerTag": "DarkKaiser",
+        "initials": "DK",
+        "college": "BITS Pilani",
+        "game": "fc",
+        "gameName": "EA Sports FC",
+        "role": "1v1 · Division 2",
+        "blurb": "Want a practice partner before FIFA Showdown. Same college preferred, not required.",
+        "needs": [
+            "Sparring partner"
+        ],
+        "availability": "Weekends"
+    },
+    {
+        "gamerTag": "CyberYuki",
+        "initials": "CY",
+        "college": "VIT Vellore",
+        "game": "valorant",
+        "gameName": "Valorant",
+        "role": "Sentinel · Diamond 3",
+        "blurb": "New to campus scene. Looking for a chill stack that still wants to win scrims.",
+        "needs": [
+            "Full team"
+        ],
+        "availability": "After 7 PM"
+    },
+    {
+        "gamerTag": "RogueVibe",
+        "initials": "RV",
+        "college": "SRM Chennai",
+        "game": "bgmi",
+        "gameName": "BGMI",
+        "role": "Fragger · Crown",
+        "blurb": "Can IGL if needed. Looking for a consistent four for Hostel Wars.",
+        "needs": [
+            "IGL",
+            "Sniper",
+            "Support"
+        ],
+        "availability": "Late night"
+    }
+]
