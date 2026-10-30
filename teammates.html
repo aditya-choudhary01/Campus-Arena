@@ -78,7 +78,7 @@
 
         <div class="filter-row">
             <span>Filter by game</span>
-            <input type="search" id="player-search" class="search-box" placeholder="Search players...">
+            <input type="search" id="player-search" class="search-box" placeholder="Search players..." aria-label="Search players">
             <div class="filter-chips">
                 <label for="mate-all">All</label>
                 <label for="mate-bgmi">BGMI</label>
@@ -90,7 +90,7 @@
 
         <div class="section-title">
             <h2>Open Players</h2>
-            <span class="count-note">Campus verified</span>
+            <span class="count-note" id="player-count" aria-live="polite">Showing 6 of 6 players</span>
         </div>
 
         <div class="player-grid" id="player-grid">
@@ -110,6 +110,7 @@
                     <li>Needs: IGL, Controller, Sentinel</li>
                     <li>Available: Weeknights</li>
                 </ul>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
@@ -128,6 +129,7 @@
                     <li>Needs: Fragger, Support</li>
                     <li>Available: Fri–Sun</li>
                 </ul>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
@@ -146,6 +148,7 @@
                     <li>Needs: Rifler, Support</li>
                     <li>Available: Evenings</li>
                 </ul>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
@@ -164,6 +167,7 @@
                     <li>Needs: Sparring partner</li>
                     <li>Available: Weekends</li>
                 </ul>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
@@ -182,6 +186,7 @@
                     <li>Needs: Full team</li>
                     <li>Available: After 7 PM</li>
                 </ul>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
@@ -200,10 +205,13 @@
                     <li>Needs: IGL, Sniper, Support</li>
                     <li>Available: Late night</li>
                 </ul>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <a href="contact.html" class="card-cta">Invite to squad</a>
             </article>
 
         </div>
+
+        <p id="player-empty" class="empty-state" hidden>No players match your search or filter.</p>
 
     </div>
 
@@ -243,5 +251,6 @@
 
 </footer>
 
+    <script src="js/teammates.js"></script>
 </body>
 </html>

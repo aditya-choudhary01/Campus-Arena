@@ -256,3 +256,43 @@ nav a.active {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Favourite controls and search feedback */
+.player-card .favorite-btn {
+    display: block;
+    width: 100%;
+    background: #181818;
+    color: #aaa;
+    border: 1px solid #333;
+    padding: 8px 11px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.player-card .favorite-btn:hover,
+.player-card .favorite-btn.favorite-active {
+    color: #d4ff00;
+    border-color: #d4ff00;
+}
+
+.player-card .favorite-btn.favorite-active {
+    background: rgba(212, 255, 0, 0.1);
+}
+
+.empty-state {
+    color: #aaa;
+    background: #1c1c1c;
+    border: 1px dashed #444;
+    padding: 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.empty-state[hidden] {
+    display: none;
+}

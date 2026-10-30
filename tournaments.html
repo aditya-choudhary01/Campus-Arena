@@ -68,7 +68,7 @@
 
         <div class="filter-row">
             <span>Filter by game</span>
-            <input type="search" id="tournament-search" class="search-box" placeholder="Search cups...">
+            <input type="search" id="tournament-search" class="search-box" placeholder="Search cups..." aria-label="Search tournaments">
             <div class="filter-chips">
                 <label for="filter-all">All</label>
                 <label for="filter-bgmi">BGMI</label>
@@ -80,7 +80,7 @@
 
         <div class="section-title">
             <h2>Upcoming Events</h2>
-            <span class="count-note">Open registration</span>
+            <span class="count-note" id="upcoming-count" aria-live="polite">Showing 6 of 6 upcoming</span>
         </div>
 
         <div class="tournament-grid">
@@ -90,6 +90,7 @@
                     <span class="game">BGMI</span>
                     <span class="status open">Open</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>BGMI Freshers Cup</h3>
                 <p>📅 Date: Oct 15, 2026</p>
                 <p>🕕 Time: 7:00 PM IST</p>
@@ -104,6 +105,7 @@
                     <span class="game">Valorant</span>
                     <span class="status open">Open</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>Valorant Campus Clash</h3>
                 <p>📅 Date: Oct 18, 2026</p>
                 <p>🕕 Time: 6:00 PM IST</p>
@@ -118,6 +120,7 @@
                     <span class="game">EA Sports FC</span>
                     <span class="status open">Open</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>FIFA Showdown</h3>
                 <p>📅 Date: Oct 22, 2026</p>
                 <p>🕕 Time: 5:30 PM IST</p>
@@ -132,6 +135,7 @@
                     <span class="game">Counter-Strike 2</span>
                     <span class="status open">Open</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>CS2 Inter-College Invitational</h3>
                 <p>📅 Date: Oct 29, 2026</p>
                 <p>🕕 Time: 6:00 PM IST</p>
@@ -146,6 +150,7 @@
                     <span class="game">Valorant</span>
                     <span class="status soon">Filling fast</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>Night Shift Scrims</h3>
                 <p>📅 Date: Nov 2, 2026</p>
                 <p>🕕 Time: 9:00 PM IST</p>
@@ -160,6 +165,7 @@
                     <span class="game">BGMI</span>
                     <span class="status soon">Filling fast</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>Hostel Wars: Erangel</h3>
                 <p>📅 Date: Nov 8, 2026</p>
                 <p>🕕 Time: 8:00 PM IST</p>
@@ -171,10 +177,11 @@
 
         </div>
 
+        <p id="upcoming-empty" class="empty-state" hidden>No upcoming tournaments match your search or filter.</p>
 
         <div class="section-title closed-title">
             <h2>Recently Completed</h2>
-            <span class="count-note">Results posted</span>
+            <span class="count-note" id="completed-count" aria-live="polite">Showing 3 of 3 completed</span>
         </div>
 
         <div class="tournament-grid">
@@ -184,6 +191,7 @@
                     <span class="game">Valorant</span>
                     <span class="status done">Completed</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>Monsoon Masters</h3>
                 <p>📅 Date: Aug 24, 2026</p>
                 <p>🏆 Champion: Phoenix</p>
@@ -197,6 +205,7 @@
                     <span class="game">BGMI</span>
                     <span class="status done">Completed</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>Summer Squad Showdown</h3>
                 <p>📅 Date: Aug 10, 2026</p>
                 <p>🏆 Champion: Viper Squad</p>
@@ -210,6 +219,7 @@
                     <span class="game">Counter-Strike 2</span>
                     <span class="status done">Completed</span>
                 </div>
+                                <button type="button" class="favorite-btn" aria-pressed="false">♡ Favorite</button>
                 <h3>Freshers Open</h3>
                 <p>📅 Date: Jul 19, 2026</p>
                 <p>🏆 Champion: Titan Esports</p>
@@ -219,6 +229,8 @@
             </article>
 
         </div>
+
+        <p id="completed-empty" class="empty-state" hidden>No completed tournaments match your search or filter.</p>
 
     </div>
 
@@ -246,5 +258,6 @@
 
 </footer>
 
+    <script src="js/tournaments.js"></script>
 </body>
 </html>

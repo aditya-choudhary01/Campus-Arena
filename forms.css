@@ -213,3 +213,9 @@
         padding: 22px 16px;
     }
 }
+
+
+.char-count.near-limit {
+    color: #f0c75e;
+    font-weight: 700;
+}

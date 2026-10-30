@@ -35,8 +35,7 @@
         <p class="page-kicker">Open registration</p>
         <h1>Register for a cup</h1>
         <p>
-            Fill this form with your college email. The entry is saved to
-            data/registrations.json when the local server is running.
+            Fill this form with your college email. This front-end demo checks your details but does not save registrations.
         </p>
     </div>
 </section>
@@ -46,7 +45,7 @@
         <h2>Tournament form</h2>
         <p class="lead">Need a full squad first? <a href="teammates.html" style="color:#d4ff00;">Find teammates</a>.</p>
 
-        <p id="form-message" class="form-message" hidden></p>
+        <p id="form-message" class="form-message" aria-live="polite" hidden></p>
 
         <form id="tournament-form" novalidate>
             <div class="form-group">
@@ -115,5 +114,6 @@
     </div>
 </footer>
 
+    <script src="js/register-tournament.js"></script>
 </body>
 </html>

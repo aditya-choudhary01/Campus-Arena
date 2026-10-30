@@ -31,9 +31,9 @@
     <div class="login-container">
         <span class="brand-tag">New player</span>
         <h1>Create Account</h1>
-        <p class="subtitle">Use your college email. The account is saved to data/users.json on the local server.</p>
+        <p class="subtitle">Use your college email to try the form. This static demo checks your details but does not create or save accounts.</p>
 
-        <p id="form-message" class="form-message" hidden></p>
+        <p id="form-message" class="form-message" aria-live="polite" hidden></p>
 
         <form id="register-form" novalidate>
             <div class="form-group">
@@ -107,5 +107,6 @@
     </div>
 </footer>
 
+    <script src="js/register.js"></script>
 </body>
 </html>

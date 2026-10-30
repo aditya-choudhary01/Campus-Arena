@@ -36,7 +36,7 @@
         <h1>Post a teammate request</h1>
         <p>
             Tell players your game, role, and when you can practice.
-            New posts are saved to data/teammate-posts.json and shown on Find Teammates.
+            This is a front-end demo. You can validate your request, but it will not be saved or published.
         </p>
     </div>
 </section>
@@ -46,7 +46,7 @@
         <h2>Open a slot</h2>
         <p class="lead">Keep the intro short. Other players will contact you through the desk.</p>
 
-        <p id="form-message" class="form-message" hidden></p>
+        <p id="form-message" class="form-message" aria-live="polite" hidden></p>
 
         <form id="teammate-form" novalidate>
             <div class="form-group">
@@ -124,5 +124,6 @@
     </div>
 </footer>
 
+    <script src="js/post-teammate.js"></script>
 </body>
 </html>

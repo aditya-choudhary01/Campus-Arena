@@ -180,3 +180,43 @@ nav a.active {
         align-items: flex-start;
     }
 }
+
+
+/* Favourite controls and search feedback */
+.tournament-card .favorite-btn {
+    width: auto;
+    display: inline-block;
+    background: #181818;
+    color: #aaa;
+    border: 1px solid #333;
+    padding: 7px 11px;
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tournament-card .favorite-btn:hover,
+.tournament-card .favorite-btn.favorite-active {
+    color: #d4ff00;
+    border-color: #d4ff00;
+}
+
+.tournament-card .favorite-btn.favorite-active {
+    background: rgba(212, 255, 0, 0.1);
+}
+
+.empty-state {
+    color: #aaa;
+    background: #1c1c1c;
+    border: 1px dashed #444;
+    padding: 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.empty-state[hidden] {
+    display: none;
+}

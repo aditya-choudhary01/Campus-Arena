@@ -35,8 +35,7 @@
         <p class="page-kicker">Help Desk</p>
         <h1>Contact</h1>
         <p>
-            Send a question about events, disputes, or club hosting.
-            The form is checked in the browser, then saved to data/contacts.json.
+            Send a question about events, disputes, or club hosting. The form is checked in your browser, but messages are not sent or saved.
         </p>
     </div>
 </section>
@@ -46,7 +45,7 @@
         <h2>Write to organizers</h2>
         <p class="lead">All fields are required. Keep it short and include your college email.</p>
 
-        <p id="form-message" class="form-message" hidden></p>
+        <p id="form-message" class="form-message" aria-live="polite" hidden></p>
 
         <form id="contact-form" novalidate>
             <div class="form-group">
@@ -95,5 +94,6 @@
     </div>
 </footer>
 
+    <script src="js/contact.js"></script>
 </body>
 </html>
