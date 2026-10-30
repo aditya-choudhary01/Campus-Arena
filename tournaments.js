@@ -172,3 +172,18 @@ fetch("data/tournaments.json")
         console.log("Showing the tournament cards already present in the HTML.");
         filterTournaments();
     });
+
+
+// Theme toggle: the choice is temporary and is not saved after refresh.
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", function () {
+    const isLightMode = document.body.classList.toggle("light-mode");
+
+    themeToggle.innerText = isLightMode ? "☾ Dark mode" : "☀ Light mode";
+    themeToggle.setAttribute("aria-pressed", isLightMode);
+    themeToggle.setAttribute(
+        "aria-label",
+        isLightMode ? "Switch to dark mode" : "Switch to light mode"
+    );
+});
