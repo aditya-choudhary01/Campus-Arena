@@ -16,7 +16,7 @@ async function updateAccountNavigation() {
 
         // Replace the Login link with the user's name.
         const accountLinks = document.querySelectorAll(
-            'header a[href="login.html"], header a[href="register.html"]'
+            'header a[href="/pages/login.html"], header a[href="/pages/register.html"]'
         );
 
         let nameLink = null;
@@ -53,7 +53,7 @@ async function updateAccountNavigation() {
                     throw new Error("Logout failed.");
                 }
 
-                window.location.href = "index.html";
+                window.location.href = "/index.html";
             } catch (error) {
                 alert("Could not log out. Please try again.");
             }

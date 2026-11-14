@@ -136,7 +136,7 @@ teammateForm.addEventListener("submit", async function (event) {
         }
 
         showTeammateMessage("Your request has been posted successfully!", "success");
-        window.location.href = "teammates.html";
+        window.location.href = "/pages/teammates.html";
     } catch (error) {
         showTeammateMessage(error.message, "error");
     } finally {

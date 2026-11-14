@@ -116,7 +116,7 @@ loginForm.addEventListener("submit", async function (event) {
         }
 
         showLoginMessage("Login successful. Opening Campus Arena...", "success");
-        window.location.href = "index.html";
+        window.location.href = "/index.html";
     } catch (error) {
         showLoginMessage(error.message || "Could not connect to the server. Please try again.", "error");
     } finally {

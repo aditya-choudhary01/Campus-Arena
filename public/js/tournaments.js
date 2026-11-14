@@ -53,7 +53,7 @@ function createTournamentCard(tournament) {
         card.appendChild(createTextElement("p", "", "👥 Format: " + tournament.format));
 
         const registerLink = createTextElement("a", "card-cta", "Register");
-        registerLink.href = "register-tournament.html?event=" + encodeURIComponent(tournament.name);
+        registerLink.href = "/pages/register-tournament.html?event=" + encodeURIComponent(tournament.name);
         card.appendChild(registerLink);
     } else if (tournament.section === "completed") {
         card.appendChild(createTextElement("p", "", "📅 Date: " + tournament.date));
@@ -62,7 +62,7 @@ function createTournamentCard(tournament) {
         card.appendChild(createTextElement("p", "", "Prize Pool: " + tournament.prize));
 
         const rulesLink = createTextElement("a", "card-cta ghost", "View format");
-        rulesLink.href = "rules.html";
+        rulesLink.href = "/pages/rules.html";
         card.appendChild(rulesLink);
     } else {
         card.appendChild(createTextElement("p", "", "📅 Date: " + tournament.date));

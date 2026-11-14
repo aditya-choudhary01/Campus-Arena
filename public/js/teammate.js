@@ -79,7 +79,7 @@ function createPlayerCard(player) {
     }
 
     const inviteLink = createPlayerTextElement("a", "card-cta", "Invite to squad");
-    inviteLink.href = "contact.html";
+    inviteLink.href = "/pages/contact.html";
     card.appendChild(inviteLink);
 
     return card;

@@ -106,7 +106,7 @@ registerForm.addEventListener("submit", async function (event) {
         }
 
         showRegisterMessage("Account created successfully. Opening Campus Arena...", "success");
-        window.location.href = "index.html";
+        window.location.href = "/index.html";
     } catch (error) {
         showRegisterMessage(error.message || "Could not connect to the server. Please try again.", "error");
     } finally {
