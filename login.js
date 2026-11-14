@@ -1,6 +1,5 @@
 // Campus Arena - Login page
-// This page checks the entered details and demonstrates DOM events.
-// It does not authenticate users because no backend is connected.
+// The browser checks the form, then asks Express to log the user in.
 
 const loginForm = document.getElementById("login-form");
 const loginMessage = document.getElementById("form-message");
@@ -61,7 +60,7 @@ passwordToggle.addEventListener("click", function () {
     }
 });
 
-loginForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
     loginMessage.hidden = true;
 
@@ -70,18 +69,59 @@ loginForm.addEventListener("submit", function (event) {
     let isFormValid = true;
 
     let emailError = email === "" ? "Please enter your email." : "";
-    if (email !== "" && !isLoginEmailValid(email)) emailError = "Please enter a valid email address.";
+    if (email !== "" && !isLoginEmailValid(email)) {
+        emailError = "Please enter a valid email address.";
+    }
+
     setLoginError("email", emailError);
-    if (emailError !== "") isFormValid = false;
+
+    if (emailError !== "") {
+        isFormValid = false;
+    }
 
     const passwordError = password.trim() === "" ? "Please enter your password." : "";
     setLoginError("password", passwordError);
-    if (passwordError !== "") isFormValid = false;
 
-    if (isFormValid) {
-        showLoginMessage("Your details look valid. Login is a visual demo; no account is authenticated.", "success");
-    } else {
+    if (passwordError !== "") {
+        isFormValid = false;
+    }
+
+    if (!isFormValid) {
         showLoginMessage("Please correct the highlighted fields and try again.", "error");
+        return;
+    }
+
+    const submitButton = document.getElementById("login-submit");
+    submitButton.disabled = true;
+    submitButton.textContent = "Logging in...";
+
+    try {
+        const response = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                role: loginRole.value,
+                remember: document.getElementById("remember").checked
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Could not log in.");
+        }
+
+        showLoginMessage("Login successful. Opening Campus Arena...", "success");
+        window.location.href = "index.html";
+    } catch (error) {
+        showLoginMessage(error.message || "Could not connect to the server. Please try again.", "error");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Login to CampusArena";
     }
 });
 

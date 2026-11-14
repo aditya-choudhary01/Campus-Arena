@@ -1,5 +1,5 @@
 // Campus Arena - Create Account page
-// This page validates the form in the browser. It does not create or save an account.
+// The browser checks the form, then sends the details to the Express backend.
 
 const registerForm = document.getElementById("register-form");
 const registerMessage = document.getElementById("form-message");
@@ -45,7 +45,7 @@ registerPasswordToggle.addEventListener("click", function () {
     }
 });
 
-registerForm.addEventListener("submit", function (event) {
+registerForm.addEventListener("submit", async function (event) {
     event.preventDefault();
     registerMessage.hidden = true;
 
@@ -63,18 +63,55 @@ registerForm.addEventListener("submit", function (event) {
             errorMessage = "Password must be at least 6 characters.";
         }
 
-        if (fieldId === "confirm-password" && value !== "" && document.getElementById("confirm-password").value !== registerPassword.value) {
+        if (fieldId === "confirm-password" && value !== registerPassword.value) {
             errorMessage = "Passwords do not match.";
         }
 
         setRegisterError(fieldId, errorMessage);
-        if (errorMessage !== "") isFormValid = false;
+
+        if (errorMessage !== "") {
+            isFormValid = false;
+        }
     }
 
-    if (isFormValid) {
-        showRegisterMessage("Your details look valid! This static demo does not create or save accounts.", "success");
-    } else {
+    if (!isFormValid) {
         showRegisterMessage("Please correct the highlighted fields and try again.", "error");
+        return;
+    }
+
+    const submitButton = document.getElementById("register-submit");
+    submitButton.disabled = true;
+    submitButton.textContent = "Creating account...";
+
+    try {
+        const response = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: document.getElementById("name").value.trim(),
+                gamerTag: document.getElementById("gamer-tag").value.trim(),
+                college: document.getElementById("college").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                role: document.getElementById("role").value,
+                password: registerPassword.value
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Could not create your account.");
+        }
+
+        showRegisterMessage("Account created successfully. Opening Campus Arena...", "success");
+        window.location.href = "index.html";
+    } catch (error) {
+        showRegisterMessage(error.message || "Could not connect to the server. Please try again.", "error");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Create account";
     }
 });
 
