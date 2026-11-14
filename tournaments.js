@@ -131,10 +131,10 @@ function showTournamentCards(tournaments) {
     for (let tournament of tournaments) {
         const card = createTournamentCard(tournament);
 
-        if (tournament.section === "completed") {
-            pastGrid.appendChild(card);
-        } else {
+        if (tournament.section === "upcoming") {
             upcomingGrid.appendChild(card);
+        } else {
+            pastGrid.appendChild(card);
         }
     }
 
