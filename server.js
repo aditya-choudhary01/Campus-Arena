@@ -240,6 +240,7 @@ async function startServer() {
     // Store login sessions in MongoDB too.
     const sessionStore = MongoStore.create({
         client: mongoose.connection.getClient(),
+        dbName: "campusArena",
         collectionName: "sessions"
     });
 
