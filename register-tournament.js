@@ -5,6 +5,19 @@ const tournamentForm = document.getElementById("tournament-form");
 const tournamentFormMessage = document.getElementById("form-message");
 const tournamentFormFields = ["name", "gamer-tag", "college", "email", "event-name", "team-name"];
 
+const eventSelect = document.getElementById("event-name");
+const eventFromUrl = new URLSearchParams(window.location.search).get("event");
+
+// If a tournament name is passed in the URL, select the matching option.
+if (eventFromUrl !== null) {
+    for (let option of eventSelect.options) {
+        if (option.value === eventFromUrl) {
+            eventSelect.value = eventFromUrl;
+            break;
+        }
+    }
+}
+
 function setTournamentError(fieldId, message) {
     const field = document.getElementById(fieldId);
     const error = document.getElementById(fieldId + "-error");

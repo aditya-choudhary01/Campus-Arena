@@ -5,11 +5,11 @@
 const tournamentSearch = document.getElementById("tournament-search");
 const tournamentFilters = document.getElementsByName("game-filter");
 const upcomingGrid = document.getElementById("upcoming-tournament-grid");
-const completedGrid = document.getElementById("completed-tournament-grid");
+const pastGrid = document.getElementById("past-tournament-grid");
 const upcomingCount = document.getElementById("upcoming-count");
-const completedCount = document.getElementById("completed-count");
+const pastCount = document.getElementById("past-count");
 const upcomingEmpty = document.getElementById("upcoming-empty");
-const completedEmpty = document.getElementById("completed-empty");
+const pastEmpty = document.getElementById("past-empty");
 
 function createTextElement(tagName, className, text) {
     const element = document.createElement(tagName);
@@ -32,7 +32,7 @@ function createTournamentCard(tournament) {
     card.className = "tournament-card";
     card.setAttribute("data-game", tournament.game);
 
-    if (tournament.section === "completed") {
+    if (tournament.section !== "upcoming") {
         card.classList.add("closed");
     }
 
@@ -55,7 +55,7 @@ function createTournamentCard(tournament) {
         const registerLink = createTextElement("a", "card-cta", "Register");
         registerLink.href = "register-tournament.html?event=" + encodeURIComponent(tournament.name);
         card.appendChild(registerLink);
-    } else {
+    } else if (tournament.section === "completed") {
         card.appendChild(createTextElement("p", "", "📅 Date: " + tournament.date));
         card.appendChild(createTextElement("p", "", "🏆 Champion: " + tournament.champion));
         card.appendChild(createTextElement("p", "", "🥈 Runner-up: " + tournament.runnerUp));
@@ -64,6 +64,12 @@ function createTournamentCard(tournament) {
         const rulesLink = createTextElement("a", "card-cta ghost", "View format");
         rulesLink.href = "rules.html";
         card.appendChild(rulesLink);
+    } else {
+        card.appendChild(createTextElement("p", "", "📅 Date: " + tournament.date));
+        card.appendChild(createTextElement("p", "", "🕕 Scheduled time: " + tournament.time));
+        card.appendChild(createTextElement("p", "", "🎟️ Entry: " + tournament.entry));
+        card.appendChild(createTextElement("p", "", "🏆 Listed prize: " + tournament.prize));
+        card.appendChild(createTextElement("p", "", "Registration closed. Results are not available in this demo."));
     }
 
     return card;
@@ -109,24 +115,24 @@ function filterTournaments() {
     const selectedGame = getSelectedTournamentGame();
 
     const upcomingResult = filterOneTournamentGroup(upcomingGrid, selectedGame, searchText);
-    const completedResult = filterOneTournamentGroup(completedGrid, selectedGame, searchText);
+    const pastResult = filterOneTournamentGroup(pastGrid, selectedGame, searchText);
 
     upcomingCount.innerText = "Showing " + upcomingResult.shown + " of " + upcomingResult.total + " upcoming";
-    completedCount.innerText = "Showing " + completedResult.shown + " of " + completedResult.total + " completed";
+    pastCount.innerText = "Showing " + pastResult.shown + " of " + pastResult.total + " past events";
 
     upcomingEmpty.hidden = upcomingResult.shown !== 0;
-    completedEmpty.hidden = completedResult.shown !== 0;
+    pastEmpty.hidden = pastResult.shown !== 0;
 }
 
 function showTournamentCards(tournaments) {
     upcomingGrid.innerHTML = "";
-    completedGrid.innerHTML = "";
+    pastGrid.innerHTML = "";
 
     for (let tournament of tournaments) {
         const card = createTournamentCard(tournament);
 
         if (tournament.section === "completed") {
-            completedGrid.appendChild(card);
+            pastGrid.appendChild(card);
         } else {
             upcomingGrid.appendChild(card);
         }
@@ -152,7 +158,7 @@ for (let filter of tournamentFilters) {
 
 tournamentSearch.addEventListener("input", filterTournaments);
 upcomingGrid.addEventListener("click", handleTournamentFavorite);
-completedGrid.addEventListener("click", handleTournamentFavorite);
+pastGrid.addEventListener("click", handleTournamentFavorite);
 
 // The HTML cards remain as a fallback if the JSON request cannot be loaded.
 filterTournaments();
