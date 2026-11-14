@@ -1,5 +1,5 @@
 // Campus Arena - Contact form
-// This page validates the message in the browser. It does not send an email.
+// This page validates the message and saves it through the Express API.
 
 const contactForm = document.getElementById("contact-form");
 const contactMessage = document.getElementById("form-message");
@@ -46,7 +46,7 @@ function updateContactCharacterCount() {
 contactText.addEventListener("input", updateContactCharacterCount);
 updateContactCharacterCount();
 
-contactForm.addEventListener("submit", function (event) {
+contactForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     let isFormValid = true;
@@ -68,10 +68,41 @@ contactForm.addEventListener("submit", function (event) {
         if (errorMessage !== "") isFormValid = false;
     }
 
-    if (isFormValid) {
-        showContactMessage("Your message looks good! This static demo does not send or save messages.", "success");
-    } else {
+    if (!isFormValid) {
         showContactMessage("Please correct the highlighted fields and try again.", "error");
+        return;
+    }
+
+    const submitButton = document.getElementById("contact-submit");
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    try {
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                topic: document.getElementById("topic").value,
+                message: contactText.value.trim()
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Could not save your message.");
+        }
+
+        showContactMessage(data.message, "success");
+        contactForm.reset();
+        updateContactCharacterCount();
+    } catch (error) {
+        showContactMessage(error.message || "Could not connect to the server.", "error");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send message";
     }
 });
 

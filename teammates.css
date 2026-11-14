@@ -318,3 +318,34 @@ body.light-mode .player-card .favorite-btn:hover,
 body.light-mode .player-card .favorite-btn.favorite-active { color: #526300; border-color: #a5c900; }
 body.light-mode .player-card .favorite-btn.favorite-active { background: #f1f8d8; }
 body.light-mode .empty-state { color: #535d68; background: #fff; border-color: #ccd3da; }
+
+
+/* Controls for a user's own MongoDB teammate listing */
+.listing-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.listing-action-btn {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #555;
+    background: #181818;
+    color: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.listing-action-btn:hover {
+    border-color: #d4ff00;
+    color: #d4ff00;
+}
+
+body.light-mode .listing-action-btn {
+    background: #f5f7f9;
+    color: #59616b;
+    border-color: #d5dae0;
+}

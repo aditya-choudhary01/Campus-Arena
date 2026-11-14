@@ -1,5 +1,5 @@
 // Campus Arena - Tournaments page
-// Loads tournament cards from data/tournaments.json.
+// Loads tournament cards through the Express API, which reads data/tournaments.json.
 // Concepts: fetch, JSON, promises, functions, arrays, loops, DOM and events.
 
 const tournamentSearch = document.getElementById("tournament-search");
@@ -163,7 +163,7 @@ pastGrid.addEventListener("click", handleTournamentFavorite);
 // The HTML cards remain as a fallback if the JSON request cannot be loaded.
 filterTournaments();
 
-fetch("data/tournaments.json")
+fetch("/api/tournaments")
     .then((response) => {
         if (!response.ok) {
             throw new Error("Could not load tournament data.");

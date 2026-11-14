@@ -9,8 +9,10 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const path = require("path");
+const fs = require("fs").promises;
 
 const User = require("./models/User");
+const Teammate = require("./models/Teammate");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -224,6 +226,280 @@ function registerAuthRoutes() {
     });
 }
 
+
+// Read and write simple JSON files stored in the data folder.
+async function readDataFile(fileName) {
+    const filePath = path.join(__dirname, "data", fileName);
+    const fileContent = await fs.readFile(filePath, "utf8");
+    return JSON.parse(fileContent);
+}
+
+async function writeDataFile(fileName, data) {
+    const filePath = path.join(__dirname, "data", fileName);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 4));
+}
+
+// Only logged-in users can create, edit or delete teammate listings.
+function requireLogin(req, res, next) {
+    if (!req.session.userId) {
+        return res.status(401).json({
+            message: "Please log in before doing this."
+        });
+    }
+
+    next();
+}
+
+// APIs that use local JSON files and MongoDB teammate records.
+function registerProjectRoutes() {
+
+    // Fetch tournament information from the local JSON file.
+    app.get("/api/tournaments", async function (req, res) {
+        try {
+            const tournaments = await readDataFile("tournaments.json");
+            res.json(tournaments);
+        } catch (error) {
+            console.log("Could not read tournaments:", error);
+            res.status(500).json({ message: "Could not load tournaments." });
+        }
+    });
+
+    // Fetch sample player information from the local JSON file.
+    app.get("/api/players", async function (req, res) {
+        try {
+            const players = await readDataFile("players.json");
+            res.json(players);
+        } catch (error) {
+            console.log("Could not read players:", error);
+            res.status(500).json({ message: "Could not load players." });
+        }
+    });
+
+    // Save a contact message in a local JSON file.
+    app.post("/api/contact", async function (req, res) {
+        try {
+            const name = String(req.body.name || "").trim();
+            const email = String(req.body.email || "").trim().toLowerCase();
+            const topic = String(req.body.topic || "").trim();
+            const message = String(req.body.message || "").trim();
+
+            if (!name || !email || !topic || message.length < 10) {
+                return res.status(400).json({
+                    message: "Please complete all fields and write a message of at least 10 characters."
+                });
+            }
+
+            const messages = await readDataFile("contact-messages.json");
+
+            const newMessage = {
+                id: Date.now().toString(),
+                name: name,
+                email: email,
+                topic: topic,
+                message: message,
+                createdAt: new Date().toISOString()
+            };
+
+            messages.push(newMessage);
+            await writeDataFile("contact-messages.json", messages);
+
+            res.status(201).json({
+                message: "Your message has been saved successfully."
+            });
+        } catch (error) {
+            console.log("Could not save contact message:", error);
+            res.status(500).json({
+                message: "Could not save your message. Please try again."
+            });
+        }
+    });
+
+    // Only a logged-in club organizer can read saved contact messages.
+    app.get("/api/contact-messages", requireLogin, async function (req, res) {
+        try {
+            const user = await User.findById(req.session.userId);
+
+            if (!user || user.role !== "Club Organizer") {
+                return res.status(403).json({
+                    message: "Only club organizers can view contact messages."
+                });
+            }
+
+            const messages = await readDataFile("contact-messages.json");
+            res.json(messages);
+        } catch (error) {
+            console.log("Could not load contact messages:", error);
+            res.status(500).json({
+                message: "Could not load contact messages."
+            });
+        }
+    });
+
+    // Fetch teammate listings saved in MongoDB.
+    app.get("/api/teammates", async function (req, res) {
+        try {
+            const teammates = await Teammate.find().sort({ createdAt: -1 });
+
+            const result = teammates.map(function (item) {
+                return {
+                    id: item._id,
+                    name: item.name,
+                    gamerTag: item.gamerTag,
+                    college: item.college,
+                    game: item.game,
+                    gameName: item.gameName,
+                    role: item.role,
+                    lookingFor: item.lookingFor,
+                    availability: item.availability,
+                    blurb: item.blurb,
+                    initials: item.gamerTag.substring(0, 2).toUpperCase(),
+                    isOwner: item.createdBy.toString() === req.session.userId
+                };
+            });
+
+            res.json(result);
+        } catch (error) {
+            console.log("Could not load teammate listings:", error);
+            res.status(500).json({
+                message: "Could not load teammate listings."
+            });
+        }
+    });
+
+    // Create a teammate listing in MongoDB.
+    app.post("/api/teammates", requireLogin, async function (req, res) {
+        try {
+            const user = await User.findById(req.session.userId);
+
+            if (!user) {
+                return res.status(401).json({
+                    message: "Please log in again."
+                });
+            }
+
+            const gameOptions = {
+                "BGMI": { game: "bgmi", gameName: "BGMI" },
+                "Valorant": { game: "valorant", gameName: "Valorant" },
+                "CS2": { game: "cs2", gameName: "CS2" },
+                "EA Sports FC": { game: "fc", gameName: "EA Sports FC" }
+            };
+
+            const selectedGame = gameOptions[req.body.game];
+            const role = String(req.body.role || "").trim();
+            const lookingFor = String(req.body.lookingFor || "").trim();
+            const availability = String(req.body.availability || "").trim();
+            const blurb = String(req.body.blurb || "").trim();
+
+            if (!selectedGame || !role || !lookingFor || !availability || blurb.length < 10) {
+                return res.status(400).json({
+                    message: "Please complete all teammate request fields."
+                });
+            }
+
+            const teammate = new Teammate({
+                name: user.name,
+                gamerTag: user.gamerTag,
+                college: user.college,
+                game: selectedGame.game,
+                gameName: selectedGame.gameName,
+                role: role,
+                lookingFor: lookingFor,
+                availability: availability,
+                blurb: blurb,
+                createdBy: user._id
+            });
+
+            await teammate.save();
+
+            res.status(201).json({
+                message: "Your teammate request has been posted.",
+                id: teammate._id
+            });
+        } catch (error) {
+            console.log("Could not create teammate listing:", error);
+            res.status(500).json({
+                message: "Could not post your request. Please try again."
+            });
+        }
+    });
+
+    // Update a teammate listing. Only its owner can edit it.
+    app.put("/api/teammates/:id", requireLogin, async function (req, res) {
+        try {
+            if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+                return res.status(400).json({ message: "Invalid teammate listing ID." });
+            }
+
+            const teammate = await Teammate.findById(req.params.id);
+
+            if (!teammate) {
+                return res.status(404).json({ message: "Teammate listing not found." });
+            }
+
+            if (teammate.createdBy.toString() !== req.session.userId) {
+                return res.status(403).json({
+                    message: "You can only edit your own teammate listing."
+                });
+            }
+
+            const role = String(req.body.role || "").trim();
+            const lookingFor = String(req.body.lookingFor || "").trim();
+            const availability = String(req.body.availability || "").trim();
+            const blurb = String(req.body.blurb || "").trim();
+
+            if (!role || !lookingFor || !availability || blurb.length < 10) {
+                return res.status(400).json({
+                    message: "Please complete all fields. The intro needs at least 10 characters."
+                });
+            }
+
+            teammate.role = role;
+            teammate.lookingFor = lookingFor;
+            teammate.availability = availability;
+            teammate.blurb = blurb;
+
+            await teammate.save();
+
+            res.json({ message: "Your teammate listing has been updated." });
+        } catch (error) {
+            console.log("Could not update teammate listing:", error);
+            res.status(500).json({
+                message: "Could not update your listing. Please try again."
+            });
+        }
+    });
+
+    // Delete a teammate listing. Only its owner can delete it.
+    app.delete("/api/teammates/:id", requireLogin, async function (req, res) {
+        try {
+            if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+                return res.status(400).json({ message: "Invalid teammate listing ID." });
+            }
+
+            const teammate = await Teammate.findById(req.params.id);
+
+            if (!teammate) {
+                return res.status(404).json({ message: "Teammate listing not found." });
+            }
+
+            if (teammate.createdBy.toString() !== req.session.userId) {
+                return res.status(403).json({
+                    message: "You can only delete your own teammate listing."
+                });
+            }
+
+            await teammate.deleteOne();
+
+            res.json({ message: "Your teammate listing has been deleted." });
+        } catch (error) {
+            console.log("Could not delete teammate listing:", error);
+            res.status(500).json({
+                message: "Could not delete your listing. Please try again."
+            });
+        }
+    });
+}
+
 // Start the server only after MongoDB is connected.
 async function startServer() {
     if (!process.env.MONGODB_URI || !process.env.SESSION_SECRET) {
@@ -260,6 +536,7 @@ async function startServer() {
 
     // Register routes after the session middleware.
     registerAuthRoutes();
+    registerProjectRoutes();
 
     // Do not let the browser open backend or dependency files directly.
     app.use(function (req, res, next) {

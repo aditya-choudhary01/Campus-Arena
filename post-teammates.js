@@ -1,11 +1,12 @@
 // Campus Arena - Post a Teammate Request form
-// This page checks the form in the browser. It does not save or publish a request.
+// This page checks the form and sends a teammate request to the Express API.
 
 const teammateForm = document.getElementById("teammate-form");
 const teammateMessage = document.getElementById("form-message");
 const teammateBlurb = document.getElementById("blurb");
 const teammateCharCount = document.getElementById("char-count");
 const teammateFields = ["name", "gamer-tag", "college", "email", "game", "role", "looking-for", "availability", "blurb"];
+let loggedInUser = null;
 
 function setTeammateError(fieldId, message) {
     const field = document.getElementById(fieldId);
@@ -46,11 +47,47 @@ function updateTeammateCharacterCount() {
 teammateBlurb.addEventListener("input", updateTeammateCharacterCount);
 updateTeammateCharacterCount();
 
-teammateForm.addEventListener("submit", function (event) {
+// Fill the personal details from the account that is currently logged in.
+async function loadTeammateAccount() {
+    try {
+        const response = await fetch("/api/auth/me");
+        const data = await response.json();
+
+        if (!data.user) {
+            showTeammateMessage("Please log in before posting a teammate request.", "error");
+            document.getElementById("post-submit").disabled = true;
+            return;
+        }
+
+        loggedInUser = data.user;
+
+        document.getElementById("name").value = data.user.name;
+        document.getElementById("gamer-tag").value = data.user.gamerTag;
+        document.getElementById("college").value = data.user.college;
+        document.getElementById("email").value = data.user.email;
+
+        document.getElementById("name").readOnly = true;
+        document.getElementById("gamer-tag").readOnly = true;
+        document.getElementById("college").readOnly = true;
+        document.getElementById("email").readOnly = true;
+    } catch (error) {
+        showTeammateMessage("Could not check your login. Please refresh the page.", "error");
+        document.getElementById("post-submit").disabled = true;
+    }
+}
+
+loadTeammateAccount();
+
+teammateForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     let isFormValid = true;
     teammateMessage.hidden = true;
+
+    if (!loggedInUser) {
+        showTeammateMessage("Please log in before posting a teammate request.", "error");
+        return;
+    }
 
     for (let fieldId of teammateFields) {
         const value = document.getElementById(fieldId).value.trim();
@@ -68,10 +105,43 @@ teammateForm.addEventListener("submit", function (event) {
         if (errorMessage !== "") isFormValid = false;
     }
 
-    if (isFormValid) {
-        showTeammateMessage("Your form looks good! This static demo does not save or publish requests.", "success");
-    } else {
+    if (!isFormValid) {
         showTeammateMessage("Please correct the highlighted fields and try again.", "error");
+        return;
+    }
+
+    const submitButton = document.getElementById("post-submit");
+    submitButton.disabled = true;
+    submitButton.textContent = "Posting request...";
+
+    try {
+        const response = await fetch("/api/teammates", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                game: document.getElementById("game").value,
+                role: document.getElementById("role").value.trim(),
+                lookingFor: document.getElementById("looking-for").value.trim(),
+                availability: document.getElementById("availability").value.trim(),
+                blurb: teammateBlurb.value.trim()
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Could not post your request.");
+        }
+
+        showTeammateMessage("Your request has been posted successfully!", "success");
+        window.location.href = "teammates.html";
+    } catch (error) {
+        showTeammateMessage(error.message, "error");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Post request";
     }
 });
 
