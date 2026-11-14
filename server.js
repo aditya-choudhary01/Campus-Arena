@@ -544,6 +544,7 @@ async function startServer() {
             req.path === "/server.js" ||
             req.path === "/package.json" ||
             req.path === "/package-lock.json" ||
+            req.path === "/data/contact-messages.json" ||
             req.path.startsWith("/models/") ||
             req.path.startsWith("/node_modules/")
         ) {
