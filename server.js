@@ -239,6 +239,26 @@ async function writeDataFile(fileName, data) {
     await fs.writeFile(filePath, JSON.stringify(data, null, 4));
 }
 
+// A tournament can accept registrations only when it is marked upcoming
+// and its date is today or a future date.
+function isRegistrationOpen(tournament) {
+    if (tournament.section !== "upcoming" || tournament.registrationOpen === false) {
+        return false;
+    }
+
+    const eventDate = new Date(tournament.date);
+
+    if (Number.isNaN(eventDate.getTime())) {
+        return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    eventDate.setHours(0, 0, 0, 0);
+
+    return eventDate >= today;
+}
+
 // Only logged-in users can create, edit or delete teammate listings.
 function requireLogin(req, res, next) {
     if (!req.session.userId) {
@@ -275,62 +295,110 @@ function registerProjectRoutes() {
         }
     });
 
-    // Save a contact message in a local JSON file.
-    app.post("/api/contact", async function (req, res) {
+    // Fetch only tournaments that are still open for registration.
+    app.get("/api/open-tournaments", async function (req, res) {
         try {
-            const name = String(req.body.name || "").trim();
-            const email = String(req.body.email || "").trim().toLowerCase();
-            const topic = String(req.body.topic || "").trim();
-            const message = String(req.body.message || "").trim();
-
-            if (!name || !email || !topic || message.length < 10) {
-                return res.status(400).json({
-                    message: "Please complete all fields and write a message of at least 10 characters."
-                });
-            }
-
-            const messages = await readDataFile("contact-messages.json");
-
-            const newMessage = {
-                id: Date.now().toString(),
-                name: name,
-                email: email,
-                topic: topic,
-                message: message,
-                createdAt: new Date().toISOString()
-            };
-
-            messages.push(newMessage);
-            await writeDataFile("contact-messages.json", messages);
-
-            res.status(201).json({
-                message: "Your message has been saved successfully."
-            });
+            const tournaments = await readDataFile("tournaments.json");
+            const openTournaments = tournaments.filter(isRegistrationOpen);
+            res.json(openTournaments);
         } catch (error) {
-            console.log("Could not save contact message:", error);
+            console.log("Could not load open tournaments:", error);
             res.status(500).json({
-                message: "Could not save your message. Please try again."
+                message: "Could not load tournaments open for registration."
             });
         }
     });
 
-    // Only a logged-in club organizer can read saved contact messages.
-    app.get("/api/contact-messages", requireLogin, async function (req, res) {
+    // Save a tournament registration in the local JSON file.
+    app.post("/api/tournament-registrations", requireLogin, async function (req, res) {
+        try {
+            const user = await User.findById(req.session.userId);
+
+            if (!user) {
+                return res.status(401).json({
+                    message: "Please log in again."
+                });
+            }
+
+            const eventName = String(req.body.eventName || "").trim();
+            const teamName = String(req.body.teamName || "").trim();
+
+            if (!eventName || !teamName) {
+                return res.status(400).json({
+                    message: "Please select a tournament and enter your team name."
+                });
+            }
+
+            // Check the event again on the server. A past event cannot be selected
+            // just by changing the browser form or sending a manual API request.
+            const tournaments = await readDataFile("tournaments.json");
+            const selectedEvent = tournaments.find(function (tournament) {
+                return tournament.name === eventName && isRegistrationOpen(tournament);
+            });
+
+            if (!selectedEvent) {
+                return res.status(409).json({
+                    message: "This tournament is not open for registration."
+                });
+            }
+
+            const registrations = await readDataFile("tournament-registrations.json");
+
+            const alreadyRegistered = registrations.some(function (registration) {
+                return registration.userId === user._id.toString() &&
+                    registration.eventName === selectedEvent.name;
+            });
+
+            if (alreadyRegistered) {
+                return res.status(409).json({
+                    message: "You have already registered for this tournament."
+                });
+            }
+
+            const newRegistration = {
+                id: Date.now().toString(),
+                userId: user._id.toString(),
+                name: user.name,
+                gamerTag: user.gamerTag,
+                college: user.college,
+                email: user.email,
+                eventName: selectedEvent.name,
+                eventDate: selectedEvent.date,
+                teamName: teamName,
+                registeredAt: new Date().toISOString()
+            };
+
+            registrations.push(newRegistration);
+            await writeDataFile("tournament-registrations.json", registrations);
+
+            res.status(201).json({
+                message: "Your tournament registration has been saved successfully."
+            });
+        } catch (error) {
+            console.log("Could not save tournament registration:", error);
+            res.status(500).json({
+                message: "Could not save your registration. Please try again."
+            });
+        }
+    });
+
+    // Only a logged-in club organizer can read saved registrations.
+    app.get("/api/tournament-registrations", requireLogin, async function (req, res) {
         try {
             const user = await User.findById(req.session.userId);
 
             if (!user || user.role !== "Club Organizer") {
                 return res.status(403).json({
-                    message: "Only club organizers can view contact messages."
+                    message: "Only club organizers can view tournament registrations."
                 });
             }
 
-            const messages = await readDataFile("contact-messages.json");
-            res.json(messages);
+            const registrations = await readDataFile("tournament-registrations.json");
+            res.json(registrations);
         } catch (error) {
-            console.log("Could not load contact messages:", error);
+            console.log("Could not read tournament registrations:", error);
             res.status(500).json({
-                message: "Could not load contact messages."
+                message: "Could not load tournament registrations."
             });
         }
     });
@@ -544,7 +612,7 @@ async function startServer() {
             req.path === "/server.js" ||
             req.path === "/package.json" ||
             req.path === "/package-lock.json" ||
-            req.path === "/data/contact-messages.json" ||
+            req.path === "/data/tournament-registrations.json" ||
             req.path.startsWith("/models/") ||
             req.path.startsWith("/node_modules/")
         ) {

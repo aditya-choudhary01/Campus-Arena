@@ -33,10 +33,10 @@
 
 <section class="page-hero">
     <div class="hero-content">
-        <p class="page-kicker">Registration currently closed</p>
+        <p class="page-kicker">Campus Tournament Desk</p>
         <h1>Tournament registration</h1>
         <p>
-            All tournament dates currently listed have passed. New registrations will open when future event dates are announced.
+            Register your team for an upcoming campus tournament. Past and completed events are always closed.
         </p>
     </div>
 </section>
@@ -44,45 +44,39 @@
 <main class="form-page-main">
     <div class="form-card">
         <h2>Tournament form</h2>
-        <p class="lead">This form is a front-end demo. No registrations are currently open or saved. <a href="teammates.html" style="color:#d4ff00;">Find teammates</a>.</p>
+        <p class="lead">Log in to register. Your account details will be filled in automatically. Only future tournaments marked as upcoming can accept registrations. <a href="login.html" style="color:#d4ff00;">Log in here</a> or <a href="teammates.html" style="color:#d4ff00;">find teammates</a>.</p>
 
         <p id="form-message" class="form-message" aria-live="polite" hidden></p>
 
         <form id="tournament-form" novalidate>
             <div class="form-group">
                 <label for="name">Full name</label>
-                <input type="text" id="name">
+                <input type="text" id="name" readonly>
                 <p class="error-text" id="name-error"></p>
             </div>
 
             <div class="form-group">
                 <label for="gamer-tag">Gamer tag</label>
-                <input type="text" id="gamer-tag">
+                <input type="text" id="gamer-tag" readonly>
                 <p class="error-text" id="gamer-tag-error"></p>
             </div>
 
             <div class="form-group">
                 <label for="college">College</label>
-                <input type="text" id="college">
+                <input type="text" id="college" readonly>
                 <p class="error-text" id="college-error"></p>
             </div>
 
             <div class="form-group">
                 <label for="email">College email</label>
-                <input type="email" id="email" placeholder="you@college.edu">
+                <input type="email" id="email" placeholder="you@college.edu" readonly>
                 <p class="error-text" id="email-error"></p>
             </div>
 
             <div class="form-group">
                 <label for="event-name">Tournament</label>
                 <select id="event-name">
-                    <option value="">Select a tournament</option>
-                    <option value="BGMI Freshers Cup">BGMI Freshers Cup</option>
-                    <option value="Valorant Campus Clash">Valorant Campus Clash</option>
-                    <option value="FIFA Showdown">FIFA Showdown</option>
-                    <option value="CS2 Inter-College Invitational">CS2 Inter-College Invitational</option>
-                    <option value="Night Shift Scrims">Night Shift Scrims</option>
-                    <option value="Hostel Wars: Erangel">Hostel Wars: Erangel</option>
+                    <option value="">Loading upcoming tournaments...</option>
                 </select>
                 <p class="error-text" id="event-name-error"></p>
             </div>
@@ -101,7 +95,7 @@
                 <p class="error-text" id="agree-rules-error"></p>
             </div>
 
-            <button type="submit" class="form-submit" id="register-submit" disabled>Registration closed</button>
+            <button type="submit" class="form-submit" id="register-submit" disabled>Checking availability...</button>
         </form>
     </div>
 </main>
