@@ -19,206 +19,210 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Create a new account.
-app.post("/api/auth/register", async function (req, res) {
-    try {
-        const name = req.body.name;
-        const gamerTag = req.body.gamerTag;
-        const college = req.body.college;
-        const email = String(req.body.email || "").trim().toLowerCase();
-        const role = req.body.role;
-        const password = req.body.password;
+// Add the account API routes after the login session has been set up.
+function registerAuthRoutes() {
 
-        if (!name || !gamerTag || !college || !email || !role || !password) {
-            return res.status(400).json({
-                message: "Please fill in all the required fields."
-            });
-        }
+    // Create a new account.
+    app.post("/api/auth/register", async function (req, res) {
+        try {
+            const name = String(req.body.name || "").trim();
+            const gamerTag = String(req.body.gamerTag || "").trim();
+            const college = String(req.body.college || "").trim();
+            const email = String(req.body.email || "").trim().toLowerCase();
+            const role = req.body.role;
+            const password = req.body.password;
 
-        if (password.length < 6) {
-            return res.status(400).json({
-                message: "Password must be at least 6 characters."
-            });
-        }
-
-        if (role !== "Student Player" && role !== "Club Organizer") {
-            return res.status(400).json({
-                message: "Please select a valid account type."
-            });
-        }
-
-        const existingUser = await User.findOne({ email: email });
-
-        if (existingUser) {
-            return res.status(409).json({
-                message: "This email is already registered. Please log in."
-            });
-        }
-
-        // Never save the original password in the database.
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const newUser = new User({
-            name: name,
-            gamerTag: gamerTag,
-            college: college,
-            email: email,
-            role: role,
-            password: hashedPassword
-        });
-
-        await newUser.save();
-
-        // Remember which account has logged in.
-        req.session.userId = newUser._id.toString();
-        req.session.cookie.maxAge = 24 * 60 * 60 * 1000;
-
-        req.session.save(function (error) {
-            if (error) {
-                console.log(error);
-                return res.status(500).json({
-                    message: "Account was created, but the login session could not be started. Please log in."
+            if (!name || !gamerTag || !college || !email || !role || !password) {
+                return res.status(400).json({
+                    message: "Please fill in all the required fields."
                 });
             }
 
-            res.status(201).json({
-                message: "Account created successfully.",
-                user: {
-                    id: newUser._id,
-                    name: newUser.name,
-                    gamerTag: newUser.gamerTag,
-                    college: newUser.college,
-                    email: newUser.email,
-                    role: newUser.role
-                }
-            });
-        });
-    } catch (error) {
-        console.log("Registration error:", error);
-
-        if (error.code === 11000) {
-            return res.status(409).json({
-                message: "This email is already registered. Please log in."
-            });
-        }
-
-        res.status(500).json({
-            message: "Something went wrong while creating your account."
-        });
-    }
-});
-
-// Log in to an existing account.
-app.post("/api/auth/login", async function (req, res) {
-    try {
-        const email = String(req.body.email || "").trim().toLowerCase();
-        const password = req.body.password;
-        const role = req.body.role;
-        const remember = req.body.remember === true;
-
-        if (!email || !password || !role) {
-            return res.status(400).json({
-                message: "Please enter your email, password and account type."
-            });
-        }
-
-        const user = await User.findOne({ email: email });
-
-        if (!user) {
-            return res.status(401).json({
-                message: "Email or password is incorrect."
-            });
-        }
-
-        const passwordMatches = await bcrypt.compare(password, user.password);
-
-        if (!passwordMatches || user.role !== role) {
-            return res.status(401).json({
-                message: "Email, password or account type is incorrect."
-            });
-        }
-
-        req.session.userId = user._id.toString();
-
-        if (remember) {
-            req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000;
-        } else {
-            req.session.cookie.maxAge = 24 * 60 * 60 * 1000;
-        }
-
-        req.session.save(function (error) {
-            if (error) {
-                console.log(error);
-                return res.status(500).json({
-                    message: "Could not start your login session. Please try again."
+            if (password.length < 6) {
+                return res.status(400).json({
+                    message: "Password must be at least 6 characters."
                 });
+            }
+
+            if (role !== "Student Player" && role !== "Club Organizer") {
+                return res.status(400).json({
+                    message: "Please select a valid account type."
+                });
+            }
+
+            const existingUser = await User.findOne({ email: email });
+
+            if (existingUser) {
+                return res.status(409).json({
+                    message: "This email is already registered. Please log in."
+                });
+            }
+
+            // Never save the original password in the database.
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const newUser = new User({
+                name: name,
+                gamerTag: gamerTag,
+                college: college,
+                email: email,
+                role: role,
+                password: hashedPassword
+            });
+
+            await newUser.save();
+
+            // Remember which account has logged in.
+            req.session.userId = newUser._id.toString();
+            req.session.cookie.maxAge = 24 * 60 * 60 * 1000;
+
+            req.session.save(function (error) {
+                if (error) {
+                    console.log(error);
+                    return res.status(500).json({
+                        message: "Account was created, but the login session could not be started. Please log in."
+                    });
+                }
+
+                res.status(201).json({
+                    message: "Account created successfully.",
+                    user: {
+                        id: newUser._id,
+                        name: newUser.name,
+                        gamerTag: newUser.gamerTag,
+                        college: newUser.college,
+                        email: newUser.email,
+                        role: newUser.role
+                    }
+                });
+            });
+        } catch (error) {
+            console.log("Registration error:", error);
+
+            if (error.code === 11000) {
+                return res.status(409).json({
+                    message: "This email is already registered. Please log in."
+                });
+            }
+
+            res.status(500).json({
+                message: "Something went wrong while creating your account."
+            });
+        }
+    });
+
+    // Log in to an existing account.
+    app.post("/api/auth/login", async function (req, res) {
+        try {
+            const email = String(req.body.email || "").trim().toLowerCase();
+            const password = req.body.password;
+            const role = req.body.role;
+            const remember = req.body.remember === true;
+
+            if (!email || !password || !role) {
+                return res.status(400).json({
+                    message: "Please enter your email, password and account type."
+                });
+            }
+
+            const user = await User.findOne({ email: email });
+
+            if (!user) {
+                return res.status(401).json({
+                    message: "Email or password is incorrect."
+                });
+            }
+
+            const passwordMatches = await bcrypt.compare(password, user.password);
+
+            if (!passwordMatches || user.role !== role) {
+                return res.status(401).json({
+                    message: "Email, password or account type is incorrect."
+                });
+            }
+
+            req.session.userId = user._id.toString();
+
+            if (remember) {
+                req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000;
+            } else {
+                req.session.cookie.maxAge = 24 * 60 * 60 * 1000;
+            }
+
+            req.session.save(function (error) {
+                if (error) {
+                    console.log(error);
+                    return res.status(500).json({
+                        message: "Could not start your login session. Please try again."
+                    });
+                }
+
+                res.json({
+                    message: "Login successful.",
+                    user: {
+                        id: user._id,
+                        name: user.name,
+                        gamerTag: user.gamerTag,
+                        email: user.email,
+                        role: user.role
+                    }
+                });
+            });
+        } catch (error) {
+            console.log("Login error:", error);
+            res.status(500).json({
+                message: "Something went wrong while logging in."
+            });
+        }
+    });
+
+    // Check whether someone is currently logged in.
+    app.get("/api/auth/me", async function (req, res) {
+        try {
+            if (!req.session.userId) {
+                return res.json({ user: null });
+            }
+
+            const user = await User.findById(req.session.userId)
+                .select("name gamerTag college email role");
+
+            if (!user) {
+                return res.json({ user: null });
             }
 
             res.json({
-                message: "Login successful.",
                 user: {
                     id: user._id,
                     name: user.name,
                     gamerTag: user.gamerTag,
+                    college: user.college,
                     email: user.email,
                     role: user.role
                 }
             });
-        });
-    } catch (error) {
-        console.log("Login error:", error);
-        res.status(500).json({
-            message: "Something went wrong while logging in."
-        });
-    }
-});
-
-// Check whether someone is currently logged in.
-app.get("/api/auth/me", async function (req, res) {
-    try {
-        if (!req.session.userId) {
-            return res.json({ user: null });
-        }
-
-        const user = await User.findById(req.session.userId)
-            .select("name gamerTag college email role");
-
-        if (!user) {
-            return res.json({ user: null });
-        }
-
-        res.json({
-            user: {
-                id: user._id,
-                name: user.name,
-                gamerTag: user.gamerTag,
-                college: user.college,
-                email: user.email,
-                role: user.role
-            }
-        });
-    } catch (error) {
-        console.log("Session check error:", error);
-        res.status(500).json({
-            message: "Could not check the login status."
-        });
-    }
-});
-
-// Log out and remove the session.
-app.post("/api/auth/logout", function (req, res) {
-    req.session.destroy(function (error) {
-        if (error) {
-            console.log("Logout error:", error);
-            return res.status(500).json({
-                message: "Could not log out. Please try again."
+        } catch (error) {
+            console.log("Session check error:", error);
+            res.status(500).json({
+                message: "Could not check the login status."
             });
         }
-
-        res.clearCookie("campusarena.sid");
-        res.json({ message: "Logged out successfully." });
     });
-});
+
+    // Log out and remove the session.
+    app.post("/api/auth/logout", function (req, res) {
+        req.session.destroy(function (error) {
+            if (error) {
+                console.log("Logout error:", error);
+                return res.status(500).json({
+                    message: "Could not log out. Please try again."
+                });
+            }
+
+            res.clearCookie("campusarena.sid");
+            res.json({ message: "Logged out successfully." });
+        });
+    });
+}
 
 // Start the server only after MongoDB is connected.
 async function startServer() {
@@ -249,6 +253,9 @@ async function startServer() {
             maxAge: 24 * 60 * 60 * 1000
         }
     }));
+
+    // Register routes after the session middleware.
+    registerAuthRoutes();
 
     // Do not let the browser open backend or dependency files directly.
     app.use(function (req, res, next) {
