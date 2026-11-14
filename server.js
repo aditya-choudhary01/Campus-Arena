@@ -231,7 +231,10 @@ async function startServer() {
         process.exit(1);
     }
 
-    await mongoose.connect(process.env.MONGODB_URI);
+    // Use a clearly named database for this project instead of MongoDB's default "test".
+    await mongoose.connect(process.env.MONGODB_URI, {
+        dbName: "campusArena"
+    });
     console.log("Connected to MongoDB.");
 
     // Store login sessions in MongoDB too.
