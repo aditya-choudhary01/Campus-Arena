@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
 async function register(req, res) {
-    try {
+    try { 
         const name = String(req.body.name || "").trim();
         const gamerTag = String(req.body.gamerTag || "").trim();
         const college = String(req.body.college || "").trim();
