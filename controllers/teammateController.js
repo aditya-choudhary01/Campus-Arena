@@ -27,7 +27,7 @@ async function create(req, res) {
         const user = await User.findById(req.session.userId);
         if (!user) return res.status(401).json({ message: "Please log in again." });
 
-        const gameOptions = {
+    const gameOptions = {
             "BGMI": { game: "bgmi", gameName: "BGMI" },
             "Valorant": { game: "valorant", gameName: "Valorant" },
             "CS2": { game: "cs2", gameName: "CS2" },
